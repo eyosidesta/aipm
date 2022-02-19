@@ -5,9 +5,6 @@ import GridAPI from "./GridAPI";
 import { makeStyles, Grid, Avatar, Typography, List } from "@material-ui/core";
 import Icon from "@material-ui/core/Icon";
 
-
-
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -18,15 +15,69 @@ const useStyles = makeStyles((theme) => ({
     color: DEEP_BLUE_COLOR,
   },
   lists: {
-    paddingLeft: "10%"
+    paddingLeft: "10%",
   },
   alignCenter: {
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
 }));
 function Header() {
   const classes = useStyles();
-  //   const colorVal = theme();
+  const listItems = [
+    {
+      text: "Ministries",
+      defaultIcon: "fa fa-caret-down textColorn",
+      newIcon: "fa fa-caret-up textColor",
+      variant: "body2",
+      iconSize: "small",
+      isIconDown: true,
+    },
+    {
+      text: "Testimonies",
+      defaultIcon: false,
+      newIcon: "fa fa-caret-up textColor",
+      variant: "body2",
+      iconSize: "small",
+      isIconDown: true,
+    },
+    {
+      text: "News",
+      defaultIcon: false,
+      newIcon: "fa fa-caret-up textColor",
+      variant: "body2",
+      iconSize: "small",
+      isIconDown: true,
+    },
+    {
+      text: "Resources",
+      defaultIcon: false,
+      newIcon: "fa fa-caret-up textColor",
+      variant: "body2",
+      iconSize: "small",
+      isIconDown: true,
+    },
+    {
+      text: "Support",
+      defaultIcon: "fa fa-caret-down textColor",
+      newIcon: "fa fa-caret-up textColor",
+      variant: "body2",
+      iconSize: "small",
+      isIconDown: true,
+    },
+    {
+      text: "About Us",
+      defaultIcon: "fa fa-caret-down textColor",
+      newIcon: "fa fa-caret-up textColor",
+      variant: "body2",
+      iconSize: "small",
+      isIconDown: true,
+    },
+  ];
+
+  const handleToggle = (val) => {
+    val.isIconDown = !val.isIconDown
+    console.log(" list item is on", val);
+  };
   return (
     <Grid className={classes.root} container>
       <Grid
@@ -38,9 +89,9 @@ function Header() {
         <Grid item>
           <Avatar alt="AIPM" src={aipm_logo} />
         </Grid>
-          <Grid item>
+        <Grid item>
           <Typography variant="body2" className={classes.paper}>
-              Ambaricho International
+            Ambaricho International
           </Typography>
           <Typography variant="body2" className={classes.paper}>
             and Prayer Movement
@@ -53,43 +104,21 @@ function Header() {
             spacing={4}
             alignItems="center"
             className={classes.lists}
+            style={{ margin: 0, width: "100%" }}
           >
-            <List component="button" variant="body2" onClick={() => {
-              console.log("kasuna gete");
-            }}>
-            <GridAPI text="Ministries" icon="dropDown" variant="body2" iconSize="small"/>
-            </List>
-            <GridAPI text="Testimonies" icon={false}/>
-            <GridAPI text="News" icon={false}/>
-            <GridAPI text="Resources" icon={false}/>
-            <GridAPI text="Support" icon="dropDown" variant="body2" iconSize="small"/>
-            <GridAPI text="About Us" icon="dropDown" variant="body2" iconSize="small"/>
-            {/* <Grid item>
-              <Typography variant="caption" className={classes.paper}>
-                Ministries <Icon className={classes.alignCenter}>star</Icon>
-                
-              </Typography>
-              
-            </Grid> */}
-            {/* <Grid item>
-              <Typography variant="body2" className={classes.paper}>
-                Ministries
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography variant="body2" className={classes.paper}>
-                Ministries
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography variant="body2" className={classes.paper}>
-                Ministries
-              </Typography>
-            </Grid> */}
+            {listItems.map((item, index) => {
+              return (
+                <GridAPI
+                  key={index}
+                  listItem={item}
+                  handleToggle={() => handleToggle(item)}
+                />
+              );
+            })}
           </Grid>
         </Grid>
-       </Grid>
-     </Grid>
+      </Grid>
+    </Grid>
   );
 }
 export default Header;
