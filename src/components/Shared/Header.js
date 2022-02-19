@@ -1,7 +1,12 @@
 import React from "react";
-import { makeStyles, Grid, Avatar, Typography, Box } from "@material-ui/core";
-import { DEEP_BLUE_COLOR } from "../../constants/colors";
 import aipm_logo from "../../assets/AIPM_LOGO.png";
+import { DEEP_BLUE_COLOR } from "../../constants/colors";
+import GridAPI from "./GridAPI";
+import { makeStyles, Grid, Avatar, Typography, List } from "@material-ui/core";
+import Icon from "@material-ui/core/Icon";
+
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,6 +17,12 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     color: DEEP_BLUE_COLOR,
   },
+  lists: {
+    paddingLeft: "10%"
+  },
+  alignCenter: {
+    alignItems: "center"
+  }
 }));
 function Header() {
   const classes = useStyles();
@@ -27,25 +38,58 @@ function Header() {
         <Grid item>
           <Avatar alt="AIPM" src={aipm_logo} />
         </Grid>
-        <Grid item>
-          {/* <Typography className={classes.paper}>
-            <Box fontSize={12} fontStyle="bold">
-              Ambaricho International
-            </Box>
-          </Typography>
-          <Typography className={classes.paper}>
-            <Box fontSize={12}>and Prayer Movement</Box>
-          </Typography> */}
-        </Grid>
-        {/* <Grid container spacing={4}>
           <Grid item>
-            <Typography className={classes.paper}>
-              <Box fontSize={12}>Ministries</Box>
-            </Typography>
+          <Typography variant="body2" className={classes.paper}>
+              Ambaricho International
+          </Typography>
+          <Typography variant="body2" className={classes.paper}>
+            and Prayer Movement
+          </Typography>
+        </Grid>
+        <Grid container item sm xs={12}>
+          <Grid
+            container
+            direction="row"
+            spacing={4}
+            alignItems="center"
+            className={classes.lists}
+          >
+            <List component="button" variant="body2" onClick={() => {
+              console.log("kasuna gete");
+            }}>
+            <GridAPI text="Ministries" icon="dropDown" variant="body2" iconSize="small"/>
+            </List>
+            <GridAPI text="Testimonies" icon={false}/>
+            <GridAPI text="News" icon={false}/>
+            <GridAPI text="Resources" icon={false}/>
+            <GridAPI text="Support" icon="dropDown" variant="body2" iconSize="small"/>
+            <GridAPI text="About Us" icon="dropDown" variant="body2" iconSize="small"/>
+            {/* <Grid item>
+              <Typography variant="caption" className={classes.paper}>
+                Ministries <Icon className={classes.alignCenter}>star</Icon>
+                
+              </Typography>
+              
+            </Grid> */}
+            {/* <Grid item>
+              <Typography variant="body2" className={classes.paper}>
+                Ministries
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography variant="body2" className={classes.paper}>
+                Ministries
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography variant="body2" className={classes.paper}>
+                Ministries
+              </Typography>
+            </Grid> */}
           </Grid>
-        </Grid> */}
-      </Grid>
-    </Grid>
+        </Grid>
+       </Grid>
+     </Grid>
   );
 }
 export default Header;
