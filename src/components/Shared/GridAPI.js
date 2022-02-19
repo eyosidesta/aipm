@@ -27,12 +27,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function GridAPI({listItem, handleToggle }) {
+  console.log("grid api worked---------")
   const classes = useStyles();
-  const [iconPossion, setIconPossion] = useState(listItem.isIconDown);
+  let counter = 2;
+  const [iconPossion, setIconPossion] = useState(counter);
   console.log("icon posision", iconPossion)
   const toggleHandler = () => {
+    counter *= 89;
+    // counter++;
+    setIconPossion(counter)
     handleToggle(listItem)
   };
+
   useEffect(() => {
     const node = loadCSS(
       "https://use.fontawesome.com/releases/v5.12.0/css/all.css",
@@ -50,9 +56,9 @@ function GridAPI({listItem, handleToggle }) {
           {listItem.text}
         </Typography>
       </Grid>
-      {listItem.defaultIcon ? (
+      {listItem.defaultIcon && (
         <Grid>
-          {iconPossion ? (
+          {listItem.isIconDown ? (
             <Icon
             fontSize={listItem.iconSize}
             onClick={toggleHandler}
@@ -76,8 +82,6 @@ function GridAPI({listItem, handleToggle }) {
             />
           )}
         </Grid>
-      ) : (
-        <></>
       )}
     </>
   );

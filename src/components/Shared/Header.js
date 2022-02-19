@@ -23,8 +23,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Header() {
   const classes = useStyles();
+
+  const handleToggle = (val) => {
+    val.isIconDown = !val.isIconDown
+    val.id = val.id * 2;
+    console.log(" list item is on", val);
+  };
+  
   const listItems = [
     {
+      id: 1,
       text: "Ministries",
       defaultIcon: "fa fa-caret-down textColorn",
       newIcon: "fa fa-caret-up textColor",
@@ -33,6 +41,7 @@ function Header() {
       isIconDown: true,
     },
     {
+      id: 2,
       text: "Testimonies",
       defaultIcon: false,
       newIcon: "fa fa-caret-up textColor",
@@ -41,6 +50,7 @@ function Header() {
       isIconDown: true,
     },
     {
+      id: 3,
       text: "News",
       defaultIcon: false,
       newIcon: "fa fa-caret-up textColor",
@@ -49,6 +59,7 @@ function Header() {
       isIconDown: true,
     },
     {
+      id: 4,
       text: "Resources",
       defaultIcon: false,
       newIcon: "fa fa-caret-up textColor",
@@ -57,6 +68,7 @@ function Header() {
       isIconDown: true,
     },
     {
+      id: 5,
       text: "Support",
       defaultIcon: "fa fa-caret-down textColor",
       newIcon: "fa fa-caret-up textColor",
@@ -65,6 +77,7 @@ function Header() {
       isIconDown: true,
     },
     {
+      id: 6,
       text: "About Us",
       defaultIcon: "fa fa-caret-down textColor",
       newIcon: "fa fa-caret-up textColor",
@@ -74,10 +87,6 @@ function Header() {
     },
   ];
 
-  const handleToggle = (val) => {
-    val.isIconDown = !val.isIconDown
-    console.log(" list item is on", val);
-  };
   return (
     <Grid className={classes.root} container>
       <Grid
@@ -109,7 +118,7 @@ function Header() {
             {listItems.map((item, index) => {
               return (
                 <GridAPI
-                  key={index}
+                  key={item.id}
                   listItem={item}
                   handleToggle={() => handleToggle(item)}
                 />
