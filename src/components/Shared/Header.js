@@ -4,6 +4,7 @@ import { DEEP_BLUE_COLOR } from "../../constants/colors";
 import GridAPI from "./GridAPI";
 import { makeStyles, Grid, Avatar, Typography, List } from "@material-ui/core";
 import Icon from "@material-ui/core/Icon";
+// import { useNavigate, BrowserRouter as Router, Route } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,11 +25,14 @@ const useStyles = makeStyles((theme) => ({
 function Header() {
   const classes = useStyles();
 
-  const handleToggle = (val) => {
-    val.isIconDown = !val.isIconDown
-    val.id = val.id * 2;
-    console.log(" list item is on", val);
+  // const navigate = useNavigate();
+  const handleToggle = (listItem) => {
+    listItem.isIconDown = !listItem.isIconDown
+    // navigate(listItem.text)
   };
+  const menuItemsClicked = (routerDir) => {
+    console.log("")
+  }
   
   const listItems = [
     {
@@ -36,18 +40,18 @@ function Header() {
       text: "Ministries",
       defaultIcon: "fa fa-caret-down textColorn",
       newIcon: "fa fa-caret-up textColor",
+      menu: [{name: "profile", onMenuClick: (() => menuItemsClicked("profile"))}, {name: "two", onMenuClick: (() => menuItemsClicked("twor"))}, {name: "three", onMenuClick: (() => menuItemsClicked("three"))}],
       variant: "body2",
       iconSize: "small",
-      isIconDown: true,
     },
     {
       id: 2,
       text: "Testimonies",
       defaultIcon: false,
       newIcon: "fa fa-caret-up textColor",
+      menu: [],
       variant: "body2",
       iconSize: "small",
-      isIconDown: true,
     },
     {
       id: 3,
@@ -56,7 +60,6 @@ function Header() {
       newIcon: "fa fa-caret-up textColor",
       variant: "body2",
       iconSize: "small",
-      isIconDown: true,
     },
     {
       id: 4,
@@ -65,25 +68,24 @@ function Header() {
       newIcon: "fa fa-caret-up textColor",
       variant: "body2",
       iconSize: "small",
-      isIconDown: true,
     },
     {
       id: 5,
       text: "Support",
       defaultIcon: "fa fa-caret-down textColor",
       newIcon: "fa fa-caret-up textColor",
+      menu: [{name: "ethioSupport", onMenuClick: (() => menuItemsClicked("ethioSupport"))}, {name: "usaSupport", onMenuClick: (() => menuItemsClicked("useSupport"))}, {name: "canadaSupport", onMenuClick: (() => menuItemsClicked("canadaSupport"))}],
       variant: "body2",
       iconSize: "small",
-      isIconDown: true,
     },
     {
       id: 6,
       text: "About Us",
       defaultIcon: "fa fa-caret-down textColor",
       newIcon: "fa fa-caret-up textColor",
+      menu: [{name: "who we are", onMenuClick: (() => menuItemsClicked("whoweare"))}, {name: "contactus", onMenuClick: (() => menuItemsClicked("contactus"))}, {name: "About Us", onMenuClick: (() => menuItemsClicked("aboutus"))}],
       variant: "body2",
       iconSize: "small",
-      isIconDown: true,
     },
   ];
 
@@ -117,11 +119,13 @@ function Header() {
           >
             {listItems.map((item, index) => {
               return (
+                // <Route render={({ history}) => (
                 <GridAPI
                   key={item.id}
                   listItem={item}
                   handleToggle={() => handleToggle(item)}
                 />
+                // )}/>
               );
             })}
           </Grid>

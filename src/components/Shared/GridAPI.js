@@ -12,12 +12,18 @@ import {
   Popper,
   MenuItem,
   MenuList,
+  Menu
 } from "@material-ui/core";
+import { BACKGROUND_COLOR } from "../../constants/colors";
 import { DEEP_BLUE_COLOR } from "../../constants/colors";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: theme.spacing(2),
+    padding: theme.spacing(2),
+    cursor: "pointer",
+  },
+  cursorPointer: {
+    cursor: "pointer",
   },
   textColor: {
     color: "DEEP_BLUE_COLOR",
@@ -28,16 +34,49 @@ const useStyles = makeStyles((theme) => ({
 }));
 function GridAPI({listItem, handleToggle }) {
   console.log("grid api worked---------")
-  const classes = useStyles();
   let counter = 2;
   const [iconPossion, setIconPossion] = useState(counter);
-  console.log("icon posision", iconPossion)
-  const toggleHandler = () => {
-    counter *= 89;
-    // counter++;
-    setIconPossion(counter)
-    handleToggle(listItem)
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  // const [open, setOpen] = useState(false);
+
+  // const prevOpen = React.useRef(open);
+  const anchorRef = React.useRef(null);
+
+  const toggleHandler = (event) => {
+    // counter *= 89;
+    // // counter++;
+    // setIconPossion(counter)
+    // handleToggle(listItem)
+    setMenuOpen(!menuOpen)
+    setAnchorEl(event.currentTarget);
+    // setOpen((prevOpen) => !prevOpen)
   };
+  const handleClose = () => {
+    setMenuOpen(false)
+  }
+  const classes = useStyles();
+  // const handleClose = (event) => {
+  //   if (anchorRef.current && anchorRef.current.contains(event.target)) {
+  //     return;
+  //   }
+
+  //   setOpen(false);
+  // }
+  // const handleListKeyDown = (event) => {
+  //   if (event.key === 'Tab') {
+  //     event.preventDefault();
+  //     setOpen(false);
+  //   }
+  // }
+
+  // React.useEffect(() => {
+  //   if (prevOpen.current === true && open === false) {
+  //     anchorRef.current.focus();
+  //   }
+
+  //   prevOpen.current = open;
+  // }, [open]);
 
   useEffect(() => {
     const node = loadCSS(
@@ -49,16 +88,39 @@ function GridAPI({listItem, handleToggle }) {
       node.parentNode.removeChild(node);
     };
   }, []);
+
+  
   return (
     <>
-      <Grid className={classes.root}>
-        <Typography onClick={toggleHandler} variant={listItem.variant} className={classes.textColor}>
+      <Grid className={classes.root} onClick={toggleHandler} ref={anchorRef}>
+        <Typography variant={listItem.variant} className={classes.textColor}>
           {listItem.text}
         </Typography>
+        <Popper open={menuOpen} anchorEl={anchorRef.current} role={undefined} transition>
+        {({ TransitionProps, placement }) => (
+            <Grow
+              {...TransitionProps}
+              style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+            >
+        <Paper>
+                <ClickAwayListener onClickAway={handleClose}>
+                  <MenuList autoFocusItem={menuOpen} id="menu-list-grow" style={{backgroundColor: `${BACKGROUND_COLOR}`}}>
+                    <MenuItem>Profile</MenuItem>
+                    <MenuItem>My account</MenuItem>
+                    <MenuItem>Logout</MenuItem>
+                  </MenuList>
+                </ClickAwayListener>
+              </Paper>
+        {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={handleClose}>Logout</MenuItem> */}
+      </Grow>
+        )}
+      </Popper>
       </Grid>
-      {listItem.defaultIcon && (
-        <Grid>
-          {listItem.isIconDown ? (
+      {listItem.menu && listItem.menu.length > 0 && (
+        <Grid className={classes.cursorPointer}>
+          {!menuOpen ? (
             <Icon
             fontSize={listItem.iconSize}
             onClick={toggleHandler}
