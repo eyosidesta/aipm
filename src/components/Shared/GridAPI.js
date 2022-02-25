@@ -33,14 +33,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function GridAPI({ listItem, handleToggle }) {
-  console.log("grid api worked---------");
-  let counter = 2;
-  const [iconPossion, setIconPossion] = useState(counter);
   const [menuOpen, setMenuOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  // const [open, setOpen] = useState(false);
-
-  // const prevOpen = React.useRef(open);
   const anchorRef = React.useRef(null);
 
   const toggleHandler = (event) => {
@@ -53,27 +47,6 @@ function GridAPI({ listItem, handleToggle }) {
     setMenuOpen(false);
   };
   const classes = useStyles();
-  // const handleClose = (event) => {
-  //   if (anchorRef.current && anchorRef.current.contains(event.target)) {
-  //     return;
-  //   }
-
-  //   setOpen(false);
-  // }
-  // const handleListKeyDown = (event) => {
-  //   if (event.key === 'Tab') {
-  //     event.preventDefault();
-  //     setOpen(false);
-  //   }
-  // }
-
-  // React.useEffect(() => {
-  //   if (prevOpen.current === true && open === false) {
-  //     anchorRef.current.focus();
-  //   }
-
-  //   prevOpen.current = open;
-  // }, [open]);
 
   useEffect(() => {
     const node = loadCSS(
@@ -112,20 +85,21 @@ function GridAPI({ listItem, handleToggle }) {
                     <MenuList
                       autoFocusItem={menuOpen}
                       id="menu-list-grow"
-                      style={{ backgroundColor: `${BACKGROUND_COLOR}`, minWidth: 160 }}
+                      style={{
+                        backgroundColor: `${BACKGROUND_COLOR}`,
+                        minWidth: 160,
+                      }}
                     >
                       {listItem.menu.map((e) => {
-                        return <MenuItem onClick={e.onMenuClick}>{e.name}</MenuItem>;
+                        return (
+                          <MenuItem key={e.name} onClick={e.onMenuClick}>
+                            {e.name}
+                          </MenuItem>
+                        );
                       })}
-                      {/* <MenuItem>Profile</MenuItem>
-                    <MenuItem>My account</MenuItem>
-                    <MenuItem>Logout</MenuItem> */}
                     </MenuList>
                   </ClickAwayListener>
                 </Paper>
-                {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem> */}
               </Grow>
             )}
           </Popper>

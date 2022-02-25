@@ -26,15 +26,11 @@ function Header() {
   const classes = useStyles();
 
   const handleNavigation = (route) => {
-    console.log("route navigation", route);
   };
-  // const navigate = useNavigate();
   const handleToggle = (listItem) => {
-    // navigate(listItem.text)
     !listItem.menu && console.log("working here wondata");
   };
   const menuItemsClicked = (route) => {
-    console.log("route", route);
     handleNavigation(route);
   };
 
@@ -143,13 +139,11 @@ function Header() {
           >
             {listItems.map((item, index) => {
               return (
-                // <Route render={({ history}) => (
                 <GridAPI
                   key={item.id}
                   listItem={item}
                   handleToggle={() => handleToggle(item)}
                 />
-                // )}/>
               );
             })}
           </Grid>
