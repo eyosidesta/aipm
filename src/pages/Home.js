@@ -12,7 +12,6 @@ function Home() {
     const classes = useStyles();
   return (
     <div className={classes.backgroundColor}>
-        <Header />
     </div>
   );
 }

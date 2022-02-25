@@ -25,22 +25,30 @@ const useStyles = makeStyles((theme) => ({
 function Header() {
   const classes = useStyles();
 
+  const handleNavigation = (route) => {
+    console.log("route navigation", route);
+  };
   // const navigate = useNavigate();
   const handleToggle = (listItem) => {
-    listItem.isIconDown = !listItem.isIconDown
     // navigate(listItem.text)
+    !listItem.menu && console.log("working here wondata");
   };
-  const menuItemsClicked = (routerDir) => {
-    console.log("")
-  }
-  
+  const menuItemsClicked = (route) => {
+    console.log("route", route);
+    handleNavigation(route);
+  };
+
   const listItems = [
     {
       id: 1,
       text: "Ministries",
       defaultIcon: "fa fa-caret-down textColorn",
       newIcon: "fa fa-caret-up textColor",
-      menu: [{name: "profile", onMenuClick: (() => menuItemsClicked("profile"))}, {name: "two", onMenuClick: (() => menuItemsClicked("twor"))}, {name: "three", onMenuClick: (() => menuItemsClicked("three"))}],
+      menu: [
+        { name: "profile", onMenuClick: () => menuItemsClicked("profile") },
+        { name: "two", onMenuClick: () => menuItemsClicked("two") },
+        { name: "three", onMenuClick: () => menuItemsClicked("three") },
+      ],
       variant: "body2",
       iconSize: "small",
     },
@@ -49,7 +57,6 @@ function Header() {
       text: "Testimonies",
       defaultIcon: false,
       newIcon: "fa fa-caret-up textColor",
-      menu: [],
       variant: "body2",
       iconSize: "small",
     },
@@ -74,7 +81,20 @@ function Header() {
       text: "Support",
       defaultIcon: "fa fa-caret-down textColor",
       newIcon: "fa fa-caret-up textColor",
-      menu: [{name: "ethioSupport", onMenuClick: (() => menuItemsClicked("ethioSupport"))}, {name: "usaSupport", onMenuClick: (() => menuItemsClicked("useSupport"))}, {name: "canadaSupport", onMenuClick: (() => menuItemsClicked("canadaSupport"))}],
+      menu: [
+        {
+          name: "ethioSupport",
+          onMenuClick: () => menuItemsClicked("ethioSupport"),
+        },
+        {
+          name: "usaSupport",
+          onMenuClick: () => menuItemsClicked("useSupport"),
+        },
+        {
+          name: "canadaSupport",
+          onMenuClick: () => menuItemsClicked("canadaSupport"),
+        },
+      ],
       variant: "body2",
       iconSize: "small",
     },
@@ -83,7 +103,11 @@ function Header() {
       text: "About Us",
       defaultIcon: "fa fa-caret-down textColor",
       newIcon: "fa fa-caret-up textColor",
-      menu: [{name: "who we are", onMenuClick: (() => menuItemsClicked("whoweare"))}, {name: "contactus", onMenuClick: (() => menuItemsClicked("contactus"))}, {name: "About Us", onMenuClick: (() => menuItemsClicked("aboutus"))}],
+      menu: [
+        { name: "who we are", onMenuClick: () => menuItemsClicked("whoweare") },
+        { name: "contactus", onMenuClick: () => menuItemsClicked("contactus") },
+        { name: "About Us", onMenuClick: () => menuItemsClicked("aboutus") },
+      ],
       variant: "body2",
       iconSize: "small",
     },
