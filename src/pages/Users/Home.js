@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles'
-import Header from "../components/Shared/Header";
-import { BACKGROUND_COLOR } from "../constants/colors";
+import Header from "../../components/Shared/Header";
+import { BACKGROUND_COLOR } from "../../constants/colors";
 
 const useStyles = makeStyles(theme => ({
     backgroundColor: {
