@@ -6,8 +6,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   image: {
-    height: 200,
-    width: 400,
+    height: 180,
+    width: 300,
+    borderRadius: "5%"
   },
   title: {
     textAlign: "center",

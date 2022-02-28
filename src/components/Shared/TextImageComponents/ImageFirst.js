@@ -3,8 +3,9 @@ import { Grid, Typography, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   image: {
-    height: 200,
-    width: 400,
+    height: 180,
+    width: 300,
+    borderRadius: "5%"
   },
   title: {
     textAlign: "center",

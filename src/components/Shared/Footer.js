@@ -52,7 +52,7 @@ const Footer = () => {
     <div className={classes.root}>
       <div className={classes.secondRoot}>
         <Grid container>
-          <Grid container justifyContent="space-between">
+          <Grid container>
             <Grid item xs={12} sm container>
               <Grid item container direction="column">
                 <Grid item>

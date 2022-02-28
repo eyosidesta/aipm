@@ -7,9 +7,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  image: {
-    height: 200,
-    width: 400,
+  container: {
+    // padding: 10,
   },
 }));
 
@@ -17,14 +16,14 @@ const TextImage = ({ data, nextVal }) => {
   const [fixed, setFixed] = useState(false);
   const classes = useStyles();
   return (
-    <Container>
+    <Container className={classes.container}>
       <Grid className={classes.root}>
         {!fixed ? (
           <>
             {nextVal % 2 == 0 ? (
-                <ImageFirst data={data} />
+              <TextFirst data={data} />
             ) : (
-                <TextFirst data={data} />
+              <ImageFirst data={data} />
             )}
           </>
         ) : (
