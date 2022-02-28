@@ -9,22 +9,22 @@ const AppUsers = () => {
       <div>
         <Header />
         <Routes>
-          <Route path="/" exact component={Home} />
-          <Route path="/prayer-movement" exact component={Home} />
-          <Route path="/mission-movement" exact component={Home} />
-          <Route path="/university-students-movement" exact component={Home} />
-          <Route path="/testimonies" exact component={Home} />
-          <Route path="/news" exact component={Home} />
-          <Route path="/resources" exact component={Home} />
-          <Route path="/online-payemnt" exact component={Home} />
-          <Route path="/account-memeber" exact component={Home} />
-          <Route path="who-we-are" exact component={Home} />
-          <Route path="/contact-us" exact component={Home} />
-          <Route path="/statement-of-faith" exact component={Home} />
-          <Route path="/values" exact component={Home} />
-          <Route path="/vission-mission" exact component={Home} />
-          <Route path="/staff-and-board-members" exact component={Home} />
-          <Route path="/staff-and-board/:id" component={Home} />
+          <Route path="/" exact element={<Home/>} />
+          <Route path="/prayer-movement" exact element={<Header/>} />
+          <Route path="/mission-movement" exact element={<Home/>} />
+          <Route path="/university-students-movement" exact element={<Home/>} />
+          <Route path="/testimonies" exact element={<Home/>} />
+          <Route path="/news" exact element={<Home/>} />
+          <Route path="/resources" exact element={<Home/>} />
+          <Route path="/online-payemnt" exact element={<Home/>} />
+          <Route path="/account-memeber" exact element={<Home/>} />
+          <Route path="who-we-are" exact element={<Home/>} />
+          <Route path="/contact-us" exact element={<Home/>} />
+          <Route path="/statement-of-faith" exact element={<Home/>} />
+          <Route path="/values" exact element={<Home/>} />
+          <Route path="/vission-mission" exact element={<Home/>} />
+          <Route path="/staff-and-board-members" exact element={<Home/>} />
+          <Route path="/staff-and-board/:id" element={<Home/>} />
         </Routes>
         <Footer />
       </div>
