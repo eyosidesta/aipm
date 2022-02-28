@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     paddingLeft: "2%",
     paddingTop: "2%",
+    marginBottom: 10,
   },
   paper: {
     color: DEEP_BLUE_COLOR,

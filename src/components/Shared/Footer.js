@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: FOOTER_COLOR,
+    marginTop: 15,
   },
   secondRoot: {
     minHeight: "25vh",
