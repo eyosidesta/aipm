@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "../../components/Shared/Footer";
 import Header from "../../components/Shared/Header";
 import Home from "./Home";
+import News from "./News";
 
 const AppUsers = () => {
   return (
@@ -14,7 +15,7 @@ const AppUsers = () => {
           <Route path="/mission-movement" exact element={<Home/>} />
           <Route path="/university-students-movement" exact element={<Home/>} />
           <Route path="/testimonies" exact element={<Home/>} />
-          <Route path="/news" exact element={<Home/>} />
+          <Route path="/news" exact element={<News/>} />
           <Route path="/resources" exact element={<Home/>} />
           <Route path="/online-payemnt" exact element={<Home/>} />
           <Route path="/account-memeber" exact element={<Home/>} />

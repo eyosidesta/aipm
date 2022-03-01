@@ -10,3 +10,10 @@ export const signOut = () => {
         type: "SIGN_OUT"
     }
 }
+
+export const getNewsAction = (data) => {
+    return {
+        type: "GET_NEWS",
+        payload: data
+    }
+}

@@ -1,5 +1,5 @@
 
-import { BACKGROUND_COLOR } from "./constants/colors";
+import { BACKGROUND_COLOR } from "./utils/constants/colors";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState } from "react";
 import AppAdmin from "./pages/Admin/AppAdmin";

@@ -14,8 +14,8 @@ import {
   MenuList,
   Menu,
 } from "@material-ui/core";
-import { BACKGROUND_COLOR } from "../../constants/colors";
-import { DEEP_BLUE_COLOR } from "../../constants/colors";
+import { BACKGROUND_COLOR } from "../../utils/constants/colors";
+import { DEEP_BLUE_COLOR } from "../../utils/constants/colors";
 
 const useStyles = makeStyles((theme) => ({
   root: {

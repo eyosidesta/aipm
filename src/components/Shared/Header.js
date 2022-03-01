@@ -1,6 +1,6 @@
 import React from "react";
 import aipm_logo from "../../assets/AIPM_LOGO.png";
-import { DEEP_BLUE_COLOR } from "../../constants/colors";
+import { DEEP_BLUE_COLOR } from "../../utils/constants/colors";
 import GridAPI from "./GridAPI";
 import { makeStyles, Grid, Avatar, Typography, List } from "@material-ui/core";
 import Icon from "@material-ui/core/Icon";

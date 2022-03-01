@@ -6,7 +6,7 @@ import {
   Paper,
   Typography,
 } from "@material-ui/core";
-import { FOOTER_COLOR, FOOTER_TEXT_COLOR } from "../../constants/colors";
+import { FOOTER_COLOR, FOOTER_TEXT_COLOR } from "../../utils/constants/colors";
 
 const useStyles = makeStyles((theme) => ({
   root: {
