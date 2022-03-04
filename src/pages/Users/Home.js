@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { makeStyles, Typography } from "@material-ui/core";
 import {
   BACKGROUND_COLOR,
@@ -9,6 +10,7 @@ import backgroundImage from "../../assets/home_new_img.png";
 import homeImageOne from "../../assets/home_image_one.png";
 import homeImageTwo from "../../assets/home_image_two.jpg";
 import HomeTickets from "../../components/Users/Home/HomeTickets";
+import ImageWithTextCenter from "../../components/Shared/ImageWithTextCenter";
 import Pagination from "@material-ui/lab/Pagination";
 import TextImage from "../../components/Shared/TextImage";
 import axios from "axios";
@@ -68,6 +70,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Home() {
   const classes = useStyles();
+  const newss = useSelector(state => state.news)
+  console.log("newss", newss)
   const items = [
     {
       title: "wining souls for chirst",
@@ -93,6 +97,7 @@ function Home() {
 
   useEffect(() => {
     postData();
+
     // fetchApi();
   }, [])
   const postData = async () => {
@@ -115,7 +120,7 @@ function Home() {
   }
   return (
     <div className={classes.root}>
-      <div className={classes.imageContainer}>
+      {/* <div className={classes.imageContainer}>
         <img className={classes.image} src={backgroundImage} alt="aipm image" />
         <div className={classes.aipmText}>
           <Typography variant="h4">AIPM</Typography>
@@ -123,7 +128,8 @@ function Home() {
             Ambaricho Internation Prayer and Mission Movement
           </Typography>
         </div>
-      </div>
+      </div> */}
+      <ImageWithTextCenter />
       {items.map((item, index) => {
         return <TextImage key={index} nextVal={index} data={item} />;
       })}
