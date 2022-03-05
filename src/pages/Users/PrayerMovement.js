@@ -4,7 +4,7 @@ import { DEEP_BLUE_COLOR } from "../../utils/constants/colors";
 import { getPrayerMovements } from "../../utils/ApiService/prayer.movement.api";
 import { useDispatch, useSelector } from "react-redux";
 import { getPrayerMovementAction } from "../../store/actions";
-import backgroundImage from "../../assets/prayer_background.png";
+import backgroundImage from "../../assets/prayer_image.png";
 import ImageWithTextCenter from "../../components/Shared/ImageWithTextCenter";
 import newsImageFive from "../../assets/home_new_img.png";
 import newsImageFour from "../../assets/home_image_two.jpg";
@@ -154,8 +154,11 @@ const PrayerMovement = () => {
     height: 60,
     backgroundImage: backgroundImage,
     title: "Prayer Movement",
-    description:
+    detail: {description:
       "God has been doing a miracle in AIPM Ministry. We have seen God's sovereign hand through prayer",
+      titleFont: "h6",
+      descriptionFont: "body2",
+    },
     borderRadius: 15,
   };
   const titleStyle = {

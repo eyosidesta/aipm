@@ -44,9 +44,9 @@ const ImageWithTextCenter = ({ styles }) => {
         alt="aipm image"
       />
       </div>
-      <div className={classes.aipmText}>
-        <Typography variant="h4">{styles.title}</Typography>
-        <Typography variant="h6">{styles.description}</Typography>
+      <div className={classes.aipmText} style={{color: styles.detail.color ? styles.detail.color : WHITE_COLOR}}>
+        <Typography variant={styles.detail.titleFont}>{styles.title}</Typography>
+        <Typography variant={styles.detail.descriptionFont}>{styles.detail.description}</Typography>
       </div>
     </div>
   );

@@ -146,7 +146,11 @@ const News = () => {
     height: 60,
     backgroundImage: backgroundImage,
     title: "AIPM News",
-    description: "",
+    detail: {
+      description: "",
+      titleFont: "h6",
+      descriptionFont: "body2",
+    },
     borderRadius: 15,
   };
   const titleStyle = {

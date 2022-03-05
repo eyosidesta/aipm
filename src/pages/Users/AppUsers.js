@@ -5,7 +5,7 @@ import Header from "../../components/Shared/Header";
 import Home from "./Home";
 import News from "./News";
 import PrayerMovement from "./PrayerMovement";
-// import Testimonies from "./Testimonies";
+import Testimony from "./Testimony";
 import UniversityStudentsMovement from "./UniversityStudentsMovement"
 import Values from "./Values";
 import VissionAndMission from "./VissionAndMission";
@@ -19,7 +19,7 @@ const AppUsers = () => {
           <Route path="/prayer-movement" exact element={<PrayerMovement/>} />
           <Route path="/mission-movement" exact element={<Home/>} />
           <Route path="/university-students-movement" exact element={<UniversityStudentsMovement/>} />
-          <Route path="/testimonies" exact element={<Home/>} />
+          <Route path="/testimonies" exact element={<Testimony/>} />
           <Route path="/news" exact element={<News/>} />
           <Route path="/resources" exact element={<Home/>} />
           <Route path="/online-payemnt" exact element={<Home/>} />
@@ -29,7 +29,7 @@ const AppUsers = () => {
           <Route path="/about-us" exact element={<Home/>} />
           <Route path="/statement-of-faith" exact element={<Home/>} />
           <Route path="/values" exact element={<Values/>} />
-          <Route path="/vission-mission" exact element={<VissionAndMission />} />
+          <Route path="/vission-and-mission" exact element={<VissionAndMission />} />
           <Route path="/staff-board-members" exact element={<Home/>} />
           <Route path="/staff-and-board/:id" element={<Home/>} />
         </Routes>

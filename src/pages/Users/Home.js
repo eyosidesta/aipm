@@ -64,8 +64,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 30,
     width: "94%",
     paddingLeft: "3%",
-    paddingLeft: "3%"
-  }
+    paddingLeft: "3%",
+  },
 }));
 function Home() {
   const classes = useStyles();
@@ -97,7 +97,11 @@ function Home() {
     height: 75,
     backgroundImage: backgroundImage,
     title: "AIPM",
-    description: "Ambaricho International And Prayer Movement",
+    detail: {
+      description: "Ambaricho International And Prayer Movement",
+      titleFont: "h3",
+      descriptionFont: "h6",
+    },
     borderRadius: 0,
   };
   const titleStyle = {
@@ -108,16 +112,16 @@ function Home() {
     <div className={classes.root}>
       <ImageWithTextCenter styles={styles} />
       <div className={classes.textImageContainer}>
-      {items.map((item, index) => {
-        return (
-          <TextImage
-            key={index}
-            nextVal={index}
-            data={item}
-            styles={titleStyle}
-          />
-        );
-      })}
+        {items.map((item, index) => {
+          return (
+            <TextImage
+              key={index}
+              nextVal={index}
+              data={item}
+              styles={titleStyle}
+            />
+          );
+        })}
       </div>
       <div className={classes.prayerMovement}>
         <Typography variant="h6" className={classes.prayerTitle}>
