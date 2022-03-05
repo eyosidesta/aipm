@@ -7,23 +7,20 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  container: {
-    // padding: 10,
-  },
 }));
 
-const TextImage = ({ data, nextVal }) => {
+const TextImage = ({ data, nextVal, styles }) => {
   const [fixed, setFixed] = useState(false);
   const classes = useStyles();
   return (
-    <Container className={classes.container}>
+    <Container>
       <Grid className={classes.root}>
         {!fixed ? (
           <>
             {nextVal % 2 == 0 ? (
-              <TextFirst data={data} />
+              <TextFirst data={data} styles={styles} />
             ) : (
-              <ImageFirst data={data} />
+              <ImageFirst data={data} styles={styles} />
             )}
           </>
         ) : (

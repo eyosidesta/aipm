@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import { makeStyles, Typography } from "@material-ui/core";
 import {
   BACKGROUND_COLOR,
@@ -11,9 +10,7 @@ import homeImageOne from "../../assets/home_image_one.png";
 import homeImageTwo from "../../assets/home_image_two.jpg";
 import HomeTickets from "../../components/Users/Home/HomeTickets";
 import ImageWithTextCenter from "../../components/Shared/ImageWithTextCenter";
-import Pagination from "@material-ui/lab/Pagination";
 import TextImage from "../../components/Shared/TextImage";
-import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,10 +21,6 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: "75vh",
     width: "100%",
     marginBottom: 30,
-  },
-  pagination: {
-    justifyContent: "center",
-    paddingLeft: "33%",
   },
   prayerMovement: {
     textAlign: "center",
@@ -61,17 +54,18 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: 20,
   },
   aipmDetail: {
-    fontSize: "4vw"
+    fontSize: "4vw",
   },
   movementDescription: {
     paddingLeft: 50,
-    paddingRight: 50
+    paddingRight: 50,
+  },
+  textImageContainer: {
+    marginTop: 30
   }
 }));
 function Home() {
   const classes = useStyles();
-  const newss = useSelector(state => state.news)
-  console.log("newss", newss)
   const items = [
     {
       title: "wining souls for chirst",
@@ -95,45 +89,33 @@ function Home() {
     },
   ];
 
-  useEffect(() => {
-    postData();
-
-    // fetchApi();
-  }, [])
-  const postData = async () => {
-    await axios.post("https://jsonplaceholder.typicode.com/posts", {
-      body: "kasu is here",
-      title: "working",
-      id: 101, 
-      userId: 1
-    }).then(res => {
-      console.log("response for the post is ", res);
-      axios.get("https://jsonplaceholder.typicode.com/posts").then(res => {
-      console.log("response is ", res)
-    })
-    })
-  }
-  const fetchApi = async () => {
-    await axios.get("https://jsonplaceholder.typicode.com/posts").then(res => {
-      console.log("response is ", res)
-    })
-  }
+  const styles = {
+    width: 100,
+    height: 75,
+    backgroundImage: backgroundImage,
+    title: "AIPM",
+    description: "Ambaricho International And Prayer Movement",
+    borderRadius: 0,
+  };
+  const titleStyle = {
+    textAlign: "center",
+    marginBottom: 10,
+  };
   return (
     <div className={classes.root}>
-      {/* <div className={classes.imageContainer}>
-        <img className={classes.image} src={backgroundImage} alt="aipm image" />
-        <div className={classes.aipmText}>
-          <Typography variant="h4">AIPM</Typography>
-          <Typography variant="h6">
-            Ambaricho Internation Prayer and Mission Movement
-          </Typography>
-        </div>
-      </div> */}
-      <ImageWithTextCenter />
+      <ImageWithTextCenter styles={styles} />
+      <div className={classes.textImageContainer}>
       {items.map((item, index) => {
-        return <TextImage key={index} nextVal={index} data={item} />;
+        return (
+          <TextImage
+            key={index}
+            nextVal={index}
+            data={item}
+            styles={titleStyle}
+          />
+        );
       })}
-      {/* <Pagination className={classes.pagination} count={10} variant="outlined" shape="rounded" /> */}
+      </div>
       <div className={classes.prayerMovement}>
         <Typography variant="h6" className={classes.prayerTitle}>
           Prayer and Mission Movement
@@ -142,7 +124,7 @@ function Home() {
           Missionaries supported by AIPM serve in unreached areas of Ethiopia.
           In addition, we give support to a few missionaries serving in India,
           Pakistan and South Sudan.
-        {/* </Typography>
+          {/* </Typography>
         <Typography variant="body2"> */}
           This movement got its name, Ambaricho International Prayer and
           Missions Movement (AIPM) because of its focus on prayer for revival

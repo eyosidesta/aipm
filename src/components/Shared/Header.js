@@ -4,6 +4,7 @@ import { DEEP_BLUE_COLOR } from "../../utils/constants/colors";
 import GridAPI from "./GridAPI";
 import { makeStyles, Grid, Avatar, Typography, List } from "@material-ui/core";
 import Icon from "@material-ui/core/Icon";
+import { Link, useNavigate } from "react-router-dom";
 // import { useNavigate, BrowserRouter as Router, Route } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -26,14 +27,21 @@ const useStyles = makeStyles((theme) => ({
 function Header() {
   const classes = useStyles();
 
+  const navigate = useNavigate();
+
   const handleNavigation = (route) => {
+    navigate(`/${route}`, {replace: true}, [navigate])
   };
   const handleToggle = (listItem) => {
-    !listItem.menu && console.log("working here wondata");
+    !listItem.menu && navigate(`/${listItem.link}`, {replace: true}, [navigate]);
   };
   const menuItemsClicked = (route) => {
     handleNavigation(route);
   };
+
+  const handleHomeNavigation = () => {
+    navigate('/', {replace: true}, [navigate]);
+  }
 
   const listItems = [
     {
@@ -42,9 +50,9 @@ function Header() {
       defaultIcon: "fa fa-caret-down textColorn",
       newIcon: "fa fa-caret-up textColor",
       menu: [
-        { name: "profile", onMenuClick: () => menuItemsClicked("profile") },
-        { name: "two", onMenuClick: () => menuItemsClicked("two") },
-        { name: "three", onMenuClick: () => menuItemsClicked("three") },
+        { name: "Prayer Movement", onMenuClick: () => menuItemsClicked("prayer-movement") },
+        { name: "Mission Movement", onMenuClick: () => menuItemsClicked("mission-movement") },
+        { name: "University Students Movement", onMenuClick: () => menuItemsClicked("university-students-movement") },
       ],
       variant: "body2",
       iconSize: "small",
@@ -56,6 +64,7 @@ function Header() {
       newIcon: "fa fa-caret-up textColor",
       variant: "body2",
       iconSize: "small",
+      link: "testimonies",
     },
     {
       id: 3,
@@ -64,6 +73,7 @@ function Header() {
       newIcon: "fa fa-caret-up textColor",
       variant: "body2",
       iconSize: "small",
+      link: "news",
     },
     {
       id: 4,
@@ -72,6 +82,7 @@ function Header() {
       newIcon: "fa fa-caret-up textColor",
       variant: "body2",
       iconSize: "small",
+      link: "resources",
     },
     {
       id: 5,
@@ -101,9 +112,13 @@ function Header() {
       defaultIcon: "fa fa-caret-down textColor",
       newIcon: "fa fa-caret-up textColor",
       menu: [
-        { name: "who we are", onMenuClick: () => menuItemsClicked("whoweare") },
-        { name: "contactus", onMenuClick: () => menuItemsClicked("contactus") },
-        { name: "About Us", onMenuClick: () => menuItemsClicked("aboutus") },
+        { name: "who we are", onMenuClick: () => menuItemsClicked("who-we-are") },
+        { name: "contactus", onMenuClick: () => menuItemsClicked("contact-us") },
+        { name: "About Us", onMenuClick: () => menuItemsClicked("about-us") },
+        { name: "Statement of Faith", onMenuClick: () => menuItemsClicked("statment-of-faith") },
+        { name: "Values", onMenuClick: () => menuItemsClicked("values") },
+        { name: "Vission and Mission", onMenuClick: () => menuItemsClicked("vission-and-mission") },
+        { name: "staff and Board Members", onMenuClick: () => menuItemsClicked("staff-board-members") },
       ],
       variant: "body2",
       iconSize: "small",
@@ -118,17 +133,19 @@ function Header() {
         spacing={2}
         style={{ margin: 0, width: "100%" }}
       >
-        <Grid item>
+        {/* <Grid > */}
+        <Grid item style={{cursor: "pointer"}} onClick={handleHomeNavigation}>
           <Avatar alt="AIPM" src={aipm_logo} />
         </Grid>
-        <Grid item>
-          <Typography variant="body2" className={classes.paper}>
-            Ambaricho International
-          </Typography>
-          <Typography variant="body2" className={classes.paper}>
-            and Prayer Movement
-          </Typography>
-        </Grid>
+          <Grid item style={{cursor: "pointer"}} onClick={handleHomeNavigation}>
+            <Typography variant="body2" className={classes.paper}>
+              Ambaricho International
+            </Typography>
+            <Typography variant="body2" className={classes.paper}>
+              and Prayer Movement
+            </Typography>
+          </Grid>
+          {/* </Grid> */}
         <Grid container item sm xs={12}>
           <Grid
             container

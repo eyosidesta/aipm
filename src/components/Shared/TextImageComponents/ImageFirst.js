@@ -8,12 +8,12 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "5%"
   },
   title: {
-    textAlign: "center",
+    textAlign: "start",
     marginBottom: 10
   }
 }));
 
-const ImageFirst = ({data}) => {
+const ImageFirst = ({data, styles}) => {
   const classes = useStyles();
   return (
     <Grid container spacing={3}>
@@ -22,7 +22,7 @@ const ImageFirst = ({data}) => {
       </Grid>
       <Grid item container xs={12} sm>
         <Grid container direction="column">
-          <Grid item className={classes.title}>
+          <Grid item style={{textAlign: styles.textAlign, marginBottom: styles.marginBottom}}>
             <Typography variant="h6">
               {data.title}
             </Typography>

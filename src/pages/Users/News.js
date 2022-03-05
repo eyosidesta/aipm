@@ -1,58 +1,181 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Pagination } from "@material-ui/lab";
+import { makeStyles, CircularProgress } from "@material-ui/core";
 import { getNews } from "../../utils/ApiService/news.api";
-import { getNewsAction } from "../../store/modules/admin/actions/index";
+import { getNewsAction } from "../../store/actions/index";
 import NEWS_IMAGE from "../../assets/home_img.JPG";
-import backgroundImage from "../../assets/home_new_img.png";
+import backgroundImage from "../../assets/home_image_two.jpg";
 import ImageWithTextCenter from "../../components/Shared/ImageWithTextCenter";
+import newsImageOne from "../../assets/news_image_one.png";
+import newsImageFive from "../../assets/home_new_img.png";
+import newsImageFour from "../../assets/home_image_two.jpg";
+import newsImageSeven from "../../assets/AIPM_LOGO.png";
+import newsImageTwo from "../../assets/news_image_two.JPG";
+import newsImageThree from "../../assets/news_image_three.JPG";
 import TextImage from "../../components/Shared/TextImage";
+import { DEEP_BLUE_COLOR } from "../../utils/constants/colors";
 
+const useStyles = makeStyles((theme) => ({
+  pagination: {
+    marginTop: 30,
+    justifyContent: "center",
+    paddingLeft: "30%",
+  },
+  textImageContainer: {
+    marginTop: 30,
+  },
+  circularProgress: {
+    textAlign: "center",
+  },
+  circularColor: {
+    color: DEEP_BLUE_COLOR,
+  },
+}));
 const News = () => {
-    const [isLoading, setIsLoading] = useState(false);
-    const dispatch = useDispatch();
-    useEffect(() => {
-        fetchNews();
-    }, []);
+  useEffect(() => {
+    fetchNews();
+  }, []);
 
-    const fetchNews = async () => {
-        setIsLoading(true);
-        const res = await getNews();
-        setIsLoading(false);
-        // dispatch({
-        //     type: "GET_NEWS",
-        //     payload: res
-        // })
-        dispatch(getNewsAction(res.data))
+  const fetchNews = async () => {
+    setIsLoading(true);
+    const res = await getNews();
+    setIsLoading(false);
+    // dispatch({
+    //     type: "GET_NEWS",
+    //     payload: res
+    // })
+    dispatch(getNewsAction(res.data));
+  };
+  const items = [
+    {
+      title: "January 20, Ambaricho Mountain Program",
+      detail: `During the 2nd week of October 2021, AIPM held its annual Missions Conference in Durame. This year we also hosted 100 
+          university students and a few high school students that are very interested in serving the Lord as missionaries. In total 250 
+          attended the conference. The conference was led by Dr. Desta and Justin Slemp. Justin is a bord member from AIPM USA. 
+          The following is the report from both Dr. Desta and Justin. During the 2nd week of October 2021, AIPM held its annual 
+          Missions Conference in Durame. This year we also hosted 100 university students and a few high school students that are 
+          very interested in serving the Lord as missionaries. In total 250 attended the conference. The conference was led by Dr. Desta 
+          and Justin Slemp. Justin is a bord member from AIPM USA. The following is the report from both Dr. Desta and Justin.`,
+      imageUrl: `${newsImageOne}`,
+    },
+    {
+      title: "November 10, 40 days fasting and prayer",
+      detail: `During the 2nd week of October 2021, AIPM held its annual Missions Conference in Durame. This year we also hosted 100 
+      university students and a few high school students that are very interested in serving the Lord as missionaries. In total 250 
+      attended the conference. The conference was led by Dr. Desta and Justin Slemp. Justin is a bord member from AIPM USA. 
+      The following is the report from both Dr. Desta and Justin. During the 2nd week of October 2021, AIPM held its annual 
+      Missions Conference in Durame. This year we also hosted 100 university students and a few high school students that are 
+      very interested in serving the Lord as missionaries. In total 250 attended the conference. The conference was led by Dr. Desta 
+      and Justin Slemp. Justin is a bord member from AIPM USA. The following is the report from both Dr. Desta and Justin.`,
+      imageUrl: `${newsImageThree}`,
+    },
+    {
+      title: "January 20, Ambaricho Mountain Program",
+      detail: `During the 2nd week of October 2021, AIPM held its annual Missions Conference in Durame. This year we also hosted 100 
+          university students and a few high school students that are very interested in serving the Lord as missionaries. In total 250 
+          attended the conference. The conference was led by Dr. Desta and Justin Slemp. Justin is a bord member from AIPM USA. 
+          The following is the report from both Dr. Desta and Justin. During the 2nd week of October 2021, AIPM held its annual 
+          Missions Conference in Durame. This year we also hosted 100 university students and a few high school students that are 
+          very interested in serving the Lord as missionaries. In total 250 attended the conference. The conference was led by Dr. Desta 
+          and Justin Slemp. Justin is a bord member from AIPM USA. The following is the report from both Dr. Desta and Justin.`,
+      imageUrl: `${newsImageSeven}`,
+    },
+    {
+      title: "September 15, Missionaries Training",
+      detail: `During the 2nd week of October 2021, AIPM held its annual Missions Conference in Durame. This year we also hosted 100 
+          university students and a few high school students that are very interested in serving the Lord as missionaries. In total 250 
+          attended the conference. The conference was led by Dr. Desta and Justin Slemp. Justin is a bord member from AIPM USA. 
+          The following is the report from both Dr. Desta and Justin. During the 2nd week of October 2021, AIPM held its annual 
+          Missions Conference in Durame. This year we also hosted 100 university students and a few high school students that are 
+          very interested in serving the Lord as missionaries. In total 250 attended the conference. The conference was led by Dr. Desta 
+          and Justin Slemp. Justin is a bord member from AIPM USA. The following is the report from both Dr. Desta and Justin.`,
+      imageUrl: `${newsImageTwo}`,
+    },
+    {
+      title: "September 15, Missionaries Training",
+      detail: `During the 2nd week of October 2021, AIPM held its annual Missions Conference in Durame. This year we also hosted 100 
+            university students and a few high school students that are very interested in serving the Lord as missionaries. In total 250 
+            attended the conference. The conference was led by Dr. Desta and Justin Slemp. Justin is a bord member from AIPM USA. 
+            The following is the report from both Dr. Desta and Justin. During the 2nd week of October 2021, AIPM held its annual 
+            Missions Conference in Durame. This year we also hosted 100 university students and a few high school students that are 
+            very interested in serving the Lord as missionaries. In total 250 attended the conference. The conference was led by Dr. Desta 
+            and Justin Slemp. Justin is a bord member from AIPM USA. The following is the report from both Dr. Desta and Justin.`,
+      imageUrl: `${newsImageFour}`,
+    },
+    {
+      title: "November 10, 40 days fasting and prayer",
+      detail: `During the 2nd week of October 2021, AIPM held its annual Missions Conference in Durame. This year we also hosted 100 
+      university students and a few high school students that are very interested in serving the Lord as missionaries. In total 250 
+      attended the conference. The conference was led by Dr. Desta and Justin Slemp. Justin is a bord member from AIPM USA. 
+      The following is the report from both Dr. Desta and Justin. During the 2nd week of October 2021, AIPM held its annual 
+      Missions Conference in Durame. This year we also hosted 100 university students and a few high school students that are 
+      very interested in serving the Lord as missionaries. In total 250 attended the conference. The conference was led by Dr. Desta 
+      and Justin Slemp. Justin is a bord member from AIPM USA. The following is the report from both Dr. Desta and Justin.`,
+      imageUrl: `${newsImageThree}`,
+    },
+    {
+      title: "January 20, Ambaricho Mountain Program",
+      detail: `During the 2nd week of October 2021, AIPM held its annual Missions Conference in Durame. This year we also hosted 100 
+          university students and a few high school students that are very interested in serving the Lord as missionaries. In total 250 
+          attended the conference. The conference was led by Dr. Desta and Justin Slemp. Justin is a bord member from AIPM USA. 
+          The following is the report from both Dr. Desta and Justin. During the 2nd week of October 2021, AIPM held its annual 
+          Missions Conference in Durame. This year we also hosted 100 university students and a few high school students that are 
+          very interested in serving the Lord as missionaries. In total 250 attended the conference. The conference was led by Dr. Desta 
+          and Justin Slemp. Justin is a bord member from AIPM USA. The following is the report from both Dr. Desta and Justin.`,
+      imageUrl: `${newsImageFive}`,
+    },
+  ];
+  const newNews = useSelector((state) => state.news);
+  const classes = useStyles();
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState(items.slice(0, 3));
+  const dispatch = useDispatch();
 
-        
-    }
-    const item = {
-        title: "wining souls for chirst",
-        detail: `He who wins souls is wise. Remember God draws the hearts of
-        men and it’s our job to point people back to Him. Soul
-        winning is a process and takes time. Sometimes, our most
-        effective witnessing tool is our lifestyle. According to
-        Proverbs 11:30, our life is a message of hope and light that
-        both reflects and is a representation of Christ.`,
-        imageUrl: `${backgroundImage}`,
-      };
-    const newNews = useSelector(state => state.news);
-    console.log(newNews.length,"newnews");
-    const styles = {
-        width: 80,
-        height: 60,
-        backgroundImage: backgroundImage,
-        title: "AIPM News",
-        description: "",
-        borderRadius: 15
-    }
-    return (
-        <>
-            <ImageWithTextCenter styles={styles}/>
-            {isLoading ? <div>loading...</div> : 
-            <TextImage data={item}/>}
-        </>
-    )
-}
+  const handleChange = (event, value) => {
+    setData(items.slice((value - 1) * 3, value * 3));
+  };
+  const count =
+    items.length / 3 - parseInt(items.length / 3) !== 0
+      ? parseInt(items.length / 3) + 1
+      : parseInt(items.length / 3);
+  const styles = {
+    width: 80,
+    height: 60,
+    backgroundImage: backgroundImage,
+    title: "AIPM News",
+    description: "",
+    borderRadius: 15,
+  };
+  const titleStyle = {
+    textAlign: "start",
+    marginBottom: 10,
+  };
+  return (
+    <>
+      <ImageWithTextCenter styles={styles} />
+      {isLoading ? (
+        <div className={classes.circularProgress}>
+          <CircularProgress className={classes.circularColor} />
+        </div>
+      ) : (
+        <div className={classes.textImageContainer}>
+          {data.map((item, index) => {
+            return <TextImage key={index} data={item} styles={titleStyle} />;
+          })}
+          {items.length > 3 && (
+            <Pagination
+              className={classes.pagination}
+              onChange={handleChange}
+              count={count}
+              variant="outlined"
+              shape="rounded"
+            />
+          )}
+        </div>
+      )}
+    </>
+  );
+};
 
 export default News;

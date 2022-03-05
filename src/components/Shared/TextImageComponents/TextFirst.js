@@ -16,13 +16,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const TextFirst = ({data}) => {
+const TextFirst = ({data, styles}) => {
   const classes = useStyles();
   return (
     <Grid container spacing={3}>
       <Grid item container xs={12} sm>
         <Grid container direction="column">
-          <Grid item className={classes.title}>
+        <Grid item style={{textAlign: styles.textAlign, marginBottom: styles.marginBottom}}>
             <Typography variant="h6">
               {data.title}
             </Typography>
