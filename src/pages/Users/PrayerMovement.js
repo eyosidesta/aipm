@@ -16,8 +16,10 @@ import TextImage from "../../components/Shared/TextImage";
 import { Pagination } from "@material-ui/lab";
 
 const useStyles = makeStyles((theme) => ({
-  textColor: {
+  root: {
     color: DEEP_BLUE_COLOR,
+    paddingLeft: "10%",
+    paddingRight: "10%",
   },
   prayerTextContainer: {
     textAlign: "center",
@@ -25,8 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   prayerDetail: {
     marginTop: 20,
-    paddingLeft: "10%",
-    paddingRight: "10%",
+    
   },
   textImageContainer: {
     marginTop: 30,
@@ -162,7 +163,7 @@ const PrayerMovement = () => {
     marginBottom: 10,
   };
   return (
-    <div className={classes.textColor}>
+    <div className={classes.root}>
       <ImageWithTextCenter styles={styles} />
       <div className={classes.prayerTextContainer}>
         <Typography variant="h4">Prayer Movement in AIPM</Typography>
@@ -194,7 +195,7 @@ const PrayerMovement = () => {
             <CircularProgress className={classes.circularColor} />
           </div>
         ) : (
-          <>
+          <div>
             {data.map((item, index) => {
               return (
                 <TextImage
@@ -205,7 +206,7 @@ const PrayerMovement = () => {
                 />
               );
             })}
-          </>
+          </div>
         )}
         {items.length > 3 && (
           <Pagination

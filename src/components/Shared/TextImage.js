@@ -13,7 +13,7 @@ const TextImage = ({ data, nextVal, styles }) => {
   const [fixed, setFixed] = useState(false);
   const classes = useStyles();
   return (
-    <Container>
+    <div>
       <Grid className={classes.root}>
         {!fixed ? (
           <>
@@ -27,7 +27,7 @@ const TextImage = ({ data, nextVal, styles }) => {
           <ImageFirst data={data} />
         )}
       </Grid>
-    </Container>
+    </div>
   );
 };
 

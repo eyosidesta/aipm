@@ -61,7 +61,10 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: 50,
   },
   textImageContainer: {
-    marginTop: 30
+    marginTop: 30,
+    width: "94%",
+    paddingLeft: "3%",
+    paddingLeft: "3%"
   }
 }));
 function Home() {

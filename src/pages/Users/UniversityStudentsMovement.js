@@ -15,13 +15,13 @@ import TextImage from "../../components/Shared/TextImage";
 const useStyles = makeStyles((themes) => ({
   root: {
     color: DEEP_BLUE_COLOR,
+    paddingLeft: "5%",
+    paddingRight: "5%",
   },
   title: {
     textAlign: "center",
   },
   description: {
-    paddingLeft: "5%",
-    paddingRight: "5%",
     marginTop: 10,
     marginBottom: 30,
   },
@@ -171,11 +171,11 @@ const UniversityStudentsMovement = () => {
           <CircularProgress className={classes.circularColor} />
         </div>
       ) : (
-        <>
+        <div>
           {data.map((item, index) => {
             return <TextImage key={index} data={item} styles={titleStyle} />;
           })}
-        </>
+        </div>
       )}
       {items.length > 3 && (
         <Pagination

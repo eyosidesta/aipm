@@ -5,8 +5,10 @@ import Header from "../../components/Shared/Header";
 import Home from "./Home";
 import News from "./News";
 import PrayerMovement from "./PrayerMovement";
+// import Testimonies from "./Testimonies";
 import UniversityStudentsMovement from "./UniversityStudentsMovement"
 import Values from "./Values";
+import VissionAndMission from "./VissionAndMission";
 
 const AppUsers = () => {
   return (
@@ -27,7 +29,7 @@ const AppUsers = () => {
           <Route path="/about-us" exact element={<Home/>} />
           <Route path="/statement-of-faith" exact element={<Home/>} />
           <Route path="/values" exact element={<Values/>} />
-          <Route path="/vission-mission" exact element={<Home/>} />
+          <Route path="/vission-mission" exact element={<VissionAndMission />} />
           <Route path="/staff-board-members" exact element={<Home/>} />
           <Route path="/staff-and-board/:id" element={<Home/>} />
         </Routes>

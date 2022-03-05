@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles, Typography } from "@material-ui/core";
+import { makeStyles, Typography, Box } from "@material-ui/core";
 import { WHITE_COLOR } from "../../utils/constants/colors";
 
 const useStyles = makeStyles((theme) => ({
@@ -32,9 +32,10 @@ const ImageWithTextCenter = ({ styles }) => {
   const classes = useStyles();
   return (
     <div className={classes.imageContainer}>
-      <img
+      <div><img
         style={{
-          borderRadius: styles.borderRadius,
+          // borderRadius: styles.borderRadius,
+          // borderBottomLeftRadius: styles.borderRadius,
           maxHeight: `${styles.height}vh`,
           paddingLeft: `${(100 - styles.width) / 2}%`,
           width: `${styles.width}%`,
@@ -42,6 +43,7 @@ const ImageWithTextCenter = ({ styles }) => {
         src={styles.backgroundImage}
         alt="aipm image"
       />
+      </div>
       <div className={classes.aipmText}>
         <Typography variant="h4">{styles.title}</Typography>
         <Typography variant="h6">{styles.description}</Typography>
