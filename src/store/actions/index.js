@@ -24,3 +24,17 @@ export const getPrayerMovementAction = (data) => {
         payload: data
     }
 }
+
+export const getTestimoniesAction = (data) => {
+    return {
+        type: "GET_TESTIMONIES",
+        payload: data
+    }
+}
+
+export const getTestimonyAction = (data) => {
+    return {
+        type: "GET_TESTIMONY",
+        payload: data
+    }
+}
