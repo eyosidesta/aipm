@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CardContainer = ({testimonies}) => {
+const CardContainer = ({testimonies, toggleModal}) => {
   const classes = useStyles();
 
   return (
@@ -16,8 +16,8 @@ const CardContainer = ({testimonies}) => {
       <Grid container spacing={3}>
         {testimonies.map((item, index) => {
           return (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={index} onClick={item.handleCardClick}>
-              <Cards key={index} testimony={item} />
+            <Grid item xs={12} sm={6} md={4} lg={3} key={index} onClick={() => toggleModal(item.id)}>
+              <Cards key={index} data={item} />
             </Grid>
           );
         })}

@@ -23,23 +23,23 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const Cards = ({testimony}) => {
+const Cards = ({data}) => {
     const classes = useStyles();
     // const handleToggle = () => {
-    //     {testimony.handleCardClick}
+    //     {data.handleCardClick}
     // }
     return (
         <Card className={classes.root}>
             <CardActionArea>
                 <CardMedia
                     className={classes.media}
-                    image={contentImage}
+                    image={data.imageUrl}
                 />
                 <CardContent>
-                    <Typography variant="h6" className={classes.title}>{testimony.name}</Typography>
-                    <Typography variant="body2">{testimony.servicePlace}</Typography>
-                    {testimony.place && <Typography variant="caption">{testimony.place}</Typography> }
-                    <Typography className={classes.button}>ReaD Testimony</Typography>
+                    <Typography variant="h6" className={classes.title}>{data.name}</Typography>
+                    <Typography variant="body2">{data.servicePlace}</Typography>
+                    {data.place && <Typography variant="caption">{data.place}</Typography> }
+                    <Typography className={classes.button}>{data.action}</Typography>
                 </CardContent>
             </CardActionArea>
         </Card>

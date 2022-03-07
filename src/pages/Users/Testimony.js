@@ -12,7 +12,11 @@ import { getTestimoniesAction } from "../../store/actions";
 import backgroundImage from "../../assets/testimony_image.png";
 import CardContainer from "../../components/Users/Testimony/CardContainer";
 import ImageWithTextCenter from "../../components/Shared/ImageWithTextCenter";
-import tamiruImage from "../../assets/ambaricho_mount.png";
+import Modals from "../../components/Shared/Modal";
+import tamiruImage from "../../assets/staff_images/tamiruImage.png";
+import testimonyTwoImage from "../../assets/ambaricho_mount.png";
+import testimonyThree from "../../assets/testimony_image.png";
+import testimonyFour from "../../assets/prayer_background.png";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyles = makeStyles((theme) => ({
@@ -43,16 +47,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 const Testimony = () => {
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
+  const [modalValue, setModalValue] = useState({});
   const toggleModal = (id) => {
-    console.log("modal is toogled id is ", id)
-  }
+    const modalVal = items.filter((item) => {
+      return item.id == id;
+    });
+    setModalValue(modalVal[0]);
+    setOpen(true);
+  };
   const items = [
     {
+      id: 1,
       name: "Aba Gole",
       servicePlace: "Missionary in Gambela",
       specialThing: "The First AIPM Ministry Missionary",
       imageUrl: tamiruImage,
-      handleCardClick: () => toggleModal(1),
+      action: "Read More",
       descriptionOne: `During the 2nd week of October 2021, AIPM held its annual Missions Conference in Durame. This year 
     we also hosted 100 university students and a few high school students that are very interested in serving 
     the Lord as missionaries. In total 250 attended the conference. The conference was led by Dr. Desta and
@@ -70,11 +81,12 @@ const Testimony = () => {
     AIPM USA. The following is the report from both Dr. Desta and Justin.`,
     },
     {
+      id: 2,
       name: "Ababa Wandaro",
       servicePlace: "Missionary In Bale",
       specialThing: "The First AIPM Ministry Missionary",
-      imageUrl: tamiruImage,
-      handleCardClick: () => toggleModal(2),
+      imageUrl: testimonyTwoImage,
+      action: "Read More",
       descriptionOne: `During the 2nd week of October 2021, AIPM held its annual Missions Conference in Durame. This year 
     we also hosted 100 university students and a few high school students that are very interested in serving 
     the Lord as missionaries. In total 250 attended the conference. The conference was led by Dr. Desta and
@@ -92,11 +104,12 @@ const Testimony = () => {
     AIPM USA. The following is the report from both Dr. Desta and Justin.`,
     },
     {
+      id: 3,
       name: "Desta Langena",
       servicePlace: "Missionary In Gojam",
       specialThing: "The First AIPM Ministry Missionary",
-      imageUrl: tamiruImage,
-      handleCardClick: () => toggleModal(3),
+      imageUrl: testimonyThree,
+      action: "Read More",
       descriptionOne: `During the 2nd week of October 2021, AIPM held its annual Missions Conference in Durame. This year 
     we also hosted 100 university students and a few high school students that are very interested in serving 
     the Lord as missionaries. In total 250 attended the conference. The conference was led by Dr. Desta and
@@ -114,11 +127,12 @@ const Testimony = () => {
     AIPM USA. The following is the report from both Dr. Desta and Justin.`,
     },
     {
+      id: 4,
       name: "Tamiru Langena",
       servicePlace: "Missionary in Afar",
       specialThing: "The First AIPM Ministry Missionary",
-      imageUrl: tamiruImage,
-      handleCardClick: () => toggleModal(4),
+      imageUrl: testimonyFour,
+      action: "Read More",
       descriptionOne: `During the 2nd week of October 2021, AIPM held its annual Missions Conference in Durame. This year 
     we also hosted 100 university students and a few high school students that are very interested in serving 
     the Lord as missionaries. In total 250 attended the conference. The conference was led by Dr. Desta and
@@ -203,6 +217,7 @@ const Testimony = () => {
       <Typography variant="h6" className={classes.title}>
         Missionaries Testimony
       </Typography>
+      <Modals open={open} setOpen={setOpen} modalData={modalValue} />
       <div className={classes.cards}>
         <div
           className={classes.cardContainer}
@@ -222,7 +237,7 @@ const Testimony = () => {
             </div>
           ) : (
             <div>
-              <CardContainer testimonies={items} />
+              <CardContainer testimonies={items} toggleModal={toggleModal} />
             </div>
           )}
         </div>
