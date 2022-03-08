@@ -115,7 +115,7 @@ function Header() {
         { name: "who we are", onMenuClick: () => menuItemsClicked("who-we-are") },
         { name: "contactus", onMenuClick: () => menuItemsClicked("contact-us") },
         { name: "About Us", onMenuClick: () => menuItemsClicked("about-us") },
-        { name: "Statement of Faith", onMenuClick: () => menuItemsClicked("statment-of-faith") },
+        { name: "Statement of Faith", onMenuClick: () => menuItemsClicked("statement-of-faith") },
         { name: "Values", onMenuClick: () => menuItemsClicked("values") },
         { name: "Vission and Mission", onMenuClick: () => menuItemsClicked("vission-and-mission") },
         { name: "staff and Board Members", onMenuClick: () => menuItemsClicked("staff-board-members") },

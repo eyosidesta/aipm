@@ -12,7 +12,6 @@ import MuiDialogActions from "@material-ui/core/DialogActions";
 import CloseIcon from "@material-ui/icons/Close";
 import MuiDialogContent from "@material-ui/core/DialogContent";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
-import tamiruImage from "../../assets/staff_images/tamiruImage.png";
 
 const styles = (theme) => ({
   root: {
