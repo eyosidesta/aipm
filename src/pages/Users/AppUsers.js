@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import BirhanBuildingProject from "./BirhanBuildingProject";
+import ContactUs from "./ContactUs";
 import Footer from "../../components/Shared/Footer";
 import Header from "../../components/Shared/Header";
 import Home from "./Home";
@@ -28,13 +30,14 @@ const AppUsers = () => {
           <Route path="/online-payemnt" exact element={<Home/>} />
           <Route path="/account-memeber" exact element={<Home/>} />
           <Route path="who-we-are" exact element={<WhoWeAre/>} />
-          <Route path="/contact-us" exact element={<Home/>} />
+          <Route path="/contact-us" exact element={<ContactUs/>} />
           <Route path="/about-us" exact element={<Home/>} />
           <Route path="/statement-of-faith" exact element={<StatementOfFaith/>} />
           <Route path="/values" exact element={<Values/>} />
           <Route path="/vission-and-mission" exact element={<VissionAndMission />} />
           <Route path="/staff-board-members" exact element={<Home/>} />
           <Route path="/staff-and-board/:id" element={<Home/>} />
+          <Route path="/birhan-building-project" element={< BirhanBuildingProject/>} />
         </Routes>
         <Footer />
       </div>

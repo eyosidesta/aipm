@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     bottom: 190,
     right: 0,
-    zIndex: 51,
+    // zIndex: 51,
   },
 }));
 

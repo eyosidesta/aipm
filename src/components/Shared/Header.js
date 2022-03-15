@@ -91,16 +91,12 @@ function Header() {
       newIcon: "fa fa-caret-up textColor",
       menu: [
         {
-          name: "ethioSupport",
-          onMenuClick: () => menuItemsClicked("ethioSupport"),
+          name: "For Ethiopians",
+          onMenuClick: () => menuItemsClicked("ethio-support"),
         },
         {
-          name: "usaSupport",
-          onMenuClick: () => menuItemsClicked("useSupport"),
-        },
-        {
-          name: "canadaSupport",
-          onMenuClick: () => menuItemsClicked("canadaSupport"),
+          name: "For Foreigners",
+          onMenuClick: () => menuItemsClicked("foreign-support"),
         },
       ],
       variant: "body2",
@@ -108,6 +104,28 @@ function Header() {
     },
     {
       id: 6,
+      text: "Projects",
+      defaultIcon: "fa fa-caret-down textColor",
+      newIcon: "fa fa-caret-up textColor",
+      menu: [
+        {
+          name: "Birhan Building",
+          onMenuClick: () => menuItemsClicked("birhan-building-project"),
+        },
+        {
+          name: "Cross Project",
+          onMenuClick: () => menuItemsClicked("cross-project"),
+        },
+        {
+          name: "others",
+          onMenuClick: () => menuItemsClicked("others-Support"),
+        },
+      ],
+      variant: "body2",
+      iconSize: "small",
+    },
+    {
+      id: 7,
       text: "About Us",
       defaultIcon: "fa fa-caret-down textColor",
       newIcon: "fa fa-caret-up textColor",

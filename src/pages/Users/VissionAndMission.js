@@ -85,10 +85,9 @@ const VissionAndMission = () => {
   };
   return (
     <div className={classes.root}>
-      <ImageWithTextCenter styles={styles} />
-      <div
+      {/* <ImageWithTextCenter styles={styles} /> */}
+      {/* <div
         className={classes.textImageBottom}
-        // style={{ top: extraSmall ? 0 : small ? 60 : medium ? 90 : 200 }}
         style={
           extraSmall
             ? textMediaQueryCss.extraSmallCss
@@ -116,7 +115,7 @@ const VissionAndMission = () => {
             </Grid>
           </Grid>
         </Grid>
-      </div>
+      </div> */}
       <div className={classes.detailsContainer}>
         <Typography variant="h6" className={classes.title}>Vision</Typography>
         <Typography variant="body2" className={classes.descriptionTwo}>

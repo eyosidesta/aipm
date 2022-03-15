@@ -1,8 +1,9 @@
 import axios from "axios";
+import { baseUrl } from "../constants/baseURL";
 
 export const getPrayerMovements = async () => {
   return await axios
-    .get("https://jsonplaceholder.typicode.com/photos")
+    .get(`${baseUrl}`)
     .then((res) => {
       return res;
     })
@@ -13,7 +14,7 @@ export const getPrayerMovements = async () => {
 
 export const getPrayerMovement = async (id) => {
   return await axios
-    .get(`https://jsonplaceholder.typicode.com/photo${id}`)
+    .get(`${baseUrl/id}`)
     .then((res) => {
       return res;
     })
