@@ -2,12 +2,14 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import BirhanBuildingProject from "./BirhanBuildingProject";
 import ContactUs from "./ContactUs";
+import CrossProject from "./CrossProject";
 import Footer from "../../components/Shared/Footer";
 import Header from "../../components/Shared/Header";
 import Home from "./Home";
 import MissionMovement from "./MissionMovement";
 import News from "./News";
 import PrayerMovement from "./PrayerMovement";
+import StaffAndBoardMembers from "./StaffAndBoardMembers";
 import StatementOfFaith from "./StatementOfFaith";
 import Testimony from "./Testimony";
 import UniversityStudentsMovement from "./UniversityStudentsMovement"
@@ -31,13 +33,13 @@ const AppUsers = () => {
           <Route path="/account-memeber" exact element={<Home/>} />
           <Route path="who-we-are" exact element={<WhoWeAre/>} />
           <Route path="/contact-us" exact element={<ContactUs/>} />
-          <Route path="/about-us" exact element={<Home/>} />
           <Route path="/statement-of-faith" exact element={<StatementOfFaith/>} />
           <Route path="/values" exact element={<Values/>} />
           <Route path="/vission-and-mission" exact element={<VissionAndMission />} />
-          <Route path="/staff-board-members" exact element={<Home/>} />
+          <Route path="/staff-board-members" exact element={<StaffAndBoardMembers/>} />
           <Route path="/staff-and-board/:id" element={<Home/>} />
           <Route path="/birhan-building-project" element={< BirhanBuildingProject/>} />
+          <Route path="/cross-project" exact element={<CrossProject />}/>
         </Routes>
         <Footer />
       </div>

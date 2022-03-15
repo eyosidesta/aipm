@@ -1,11 +1,9 @@
 import React from "react";
-import aipm_logo from "../../assets/AIPM_LOGO.png";
 import { DEEP_BLUE_COLOR } from "../../utils/constants/colors";
+import { makeStyles, Grid, Avatar, Typography } from "@material-ui/core";
+import { useNavigate } from "react-router-dom";
+import aipm_logo from "../../assets/AIPM_LOGO.png";
 import GridAPI from "./GridAPI";
-import { makeStyles, Grid, Avatar, Typography, List } from "@material-ui/core";
-import Icon from "@material-ui/core/Icon";
-import { Link, useNavigate } from "react-router-dom";
-// import { useNavigate, BrowserRouter as Router, Route } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -132,7 +130,6 @@ function Header() {
       menu: [
         { name: "who we are", onMenuClick: () => menuItemsClicked("who-we-are") },
         { name: "contactus", onMenuClick: () => menuItemsClicked("contact-us") },
-        { name: "About Us", onMenuClick: () => menuItemsClicked("about-us") },
         { name: "Statement of Faith", onMenuClick: () => menuItemsClicked("statement-of-faith") },
         { name: "Values", onMenuClick: () => menuItemsClicked("values") },
         { name: "Vission and Mission", onMenuClick: () => menuItemsClicked("vission-and-mission") },
