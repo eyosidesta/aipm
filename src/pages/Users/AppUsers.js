@@ -11,6 +11,7 @@ import Testimony from "./Testimony";
 import UniversityStudentsMovement from "./UniversityStudentsMovement"
 import Values from "./Values";
 import VissionAndMission from "./VissionAndMission";
+import WhoWeAre from "./WhoWeAre";
 
 const AppUsers = () => {
   return (
@@ -26,7 +27,7 @@ const AppUsers = () => {
           <Route path="/resources" exact element={<Home/>} />
           <Route path="/online-payemnt" exact element={<Home/>} />
           <Route path="/account-memeber" exact element={<Home/>} />
-          <Route path="who-we-are" exact element={<Home/>} />
+          <Route path="who-we-are" exact element={<WhoWeAre/>} />
           <Route path="/contact-us" exact element={<Home/>} />
           <Route path="/about-us" exact element={<Home/>} />
           <Route path="/statement-of-faith" exact element={<StatementOfFaith/>} />
