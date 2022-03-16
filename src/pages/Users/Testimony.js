@@ -170,9 +170,9 @@ const Testimony = () => {
   const testimoniesState = useSelector((state) => state.testimonies);
 
   useEffect(() => {
-    fetch();
+    fetchTestimonies();
   }, []);
-  const fetch = async () => {
+  const fetchTestimonies = async () => {
     setIsLoading(true);
     const res = await getTestimonies();
     setIsLoading(false);

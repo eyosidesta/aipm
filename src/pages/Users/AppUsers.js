@@ -10,6 +10,7 @@ import MissionMovement from "./MissionMovement";
 import News from "./News";
 import PrayerMovement from "./PrayerMovement";
 import StaffAndBoardMembers from "./StaffAndBoardMembers";
+import StaffMemberDetail from "./StaffMebmerDetail";
 import StatementOfFaith from "./StatementOfFaith";
 import Testimony from "./Testimony";
 import UniversityStudentsMovement from "./UniversityStudentsMovement"
@@ -37,7 +38,7 @@ const AppUsers = () => {
           <Route path="/values" exact element={<Values/>} />
           <Route path="/vission-and-mission" exact element={<VissionAndMission />} />
           <Route path="/staff-board-members" exact element={<StaffAndBoardMembers/>} />
-          <Route path="/staff-and-board/:id" element={<Home/>} />
+          <Route path="/staff-board-member/:id" element={<StaffMemberDetail/>} />
           <Route path="/birhan-building-project" element={< BirhanBuildingProject/>} />
           <Route path="/cross-project" exact element={<CrossProject />}/>
         </Routes>

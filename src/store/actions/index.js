@@ -38,3 +38,17 @@ export const getTestimonyAction = (data) => {
         payload: data
     }
 }
+
+export const getStaffMembersAction = (data) => {
+    return {
+        type: "GET_STAFF_MEMBERS",
+        payload: data
+    }
+}
+
+export const getStaffMemberAction = (data) => {
+    return {
+        type: "GET_STAFF_MEMBER",
+        payload: data
+    }
+}
