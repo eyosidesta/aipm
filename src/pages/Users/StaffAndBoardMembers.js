@@ -14,6 +14,7 @@ import {
   getStaffMembersAction,
   getStaffMemberAction,
 } from "../../store/actions";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { DEEP_BLUE_COLOR } from "../../utils/constants/colors";
 import aberashImage from "../../assets/staff_images/avater.png";
@@ -65,11 +66,11 @@ const StaffAndBoardMembers = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const dispatch = useDispatch();
-  const staffsState = useSelector((state) => state.staffmembers);
-  const staffState = useSelector((state) => state.staffMember);
-
+  
+  const staffsState = useSelector((state) => state.staffMembers);
   const theme = useTheme();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const extraSmall = useMediaQuery(theme.breakpoints.down("xs"));
   const small = useMediaQuery(theme.breakpoints.down("sm"));
@@ -78,13 +79,15 @@ const StaffAndBoardMembers = () => {
     {
       id: 1,
       name: "Dr. Desta Langena",
-      servicePlace: "AIPM Ethiopia Director",
+      gender: "Male",
+      serviceTitle: "AIPM Ethiopia Director",
       place: "Durame, Ethiopia",
+
 
       imageUrl: destaImage,
       action: "Read More",
 
-      ethiopianStaff: "true",
+      ethiopianStaff: true,
 
       whoIsHe: `Ambaricho International Prayer and Mission Movement USA (AIPM USA), is a partner with Ambaricho International Prayer and Mission Movement 
           (AIPM in Ethiopia, a dynamic grassroots movement of prayer and missions outreach centered in Southern Ethiopia.  AIPM USA is directed by a Board 
@@ -101,13 +104,14 @@ const StaffAndBoardMembers = () => {
     {
       id: 2,
       name: "Zenebech Oushe",
-      servicePlace: "AIPM Ethiopia Board Member",
+      gender: "Female",
+      serviceTitle: "AIPM Ethiopia Board Member",
       place: "Durame, Ethiopia",
 
       imageUrl: zeniImage,
       action: "Read More",
 
-      ethiopianStaff: "true",
+      ethiopianStaff: true,
 
       whoIsHe: `Ambaricho International Prayer and Mission Movement USA (AIPM USA), is a partner with Ambaricho International Prayer and Mission Movement 
             (AIPM in Ethiopia, a dynamic grassroots movement of prayer and missions outreach centered in Southern Ethiopia.  AIPM USA is directed by a Board 
@@ -124,13 +128,14 @@ const StaffAndBoardMembers = () => {
     {
       id: 3,
       name: "Tekalign Daniel",
-      servicePlace: "AIPM Ethiopia Board Member",
+      gender: "Male",
+      serviceTitle: "AIPM Ethiopia Board Member",
       place: "Durame, Ethiopia",
 
       imageUrl: tekalignImage,
       action: "Read More",
 
-      ethiopianStaff: "true",
+      ethiopianStaff: true,
 
       whoIsHe: `Ambaricho International Prayer and Mission Movement USA (AIPM USA), is a partner with Ambaricho International Prayer and Mission Movement 
             (AIPM in Ethiopia, a dynamic grassroots movement of prayer and missions outreach centered in Southern Ethiopia.  AIPM USA is directed by a Board 
@@ -147,13 +152,14 @@ const StaffAndBoardMembers = () => {
     {
       id: 4,
       name: "Tamiru Langena",
-      servicePlace: "AIPM Ethiopia Board Member",
+      gender: "Male",
+      serviceTitle: "AIPM Ethiopia Board Member",
       place: "Durame, Ethiopia",
 
       imageUrl: tamiruImage,
       action: "Read More",
 
-      ethiopianStaff: "true",
+      ethiopianStaff: true,
 
       whoIsHe: `Ambaricho International Prayer and Mission Movement USA (AIPM USA), is a partner with Ambaricho International Prayer and Mission Movement 
             (AIPM in Ethiopia, a dynamic grassroots movement of prayer and missions outreach centered in Southern Ethiopia.  AIPM USA is directed by a Board 
@@ -170,13 +176,14 @@ const StaffAndBoardMembers = () => {
     {
       id: 5,
       name: "Tesema Tesfaye",
-      servicePlace: "AIPM Ethiopia Board Member",
+      gender: "Male",
+      serviceTitle: "AIPM Ethiopia Board Member",
       place: "Durame, Ethiopia",
 
       imageUrl: tesemaImage,
       action: "Read More",
 
-      ethiopianStaff: "true",
+      ethiopianStaff: true,
 
       whoIsHe: `Ambaricho International Prayer and Mission Movement USA (AIPM USA), is a partner with Ambaricho International Prayer and Mission Movement 
             (AIPM in Ethiopia, a dynamic grassroots movement of prayer and missions outreach centered in Southern Ethiopia.  AIPM USA is directed by a Board 
@@ -193,13 +200,14 @@ const StaffAndBoardMembers = () => {
     {
       id: 6,
       name: "Aberash Adore",
-      servicePlace: "AIPM Ethiopia Board Member",
+      gender: "Female",
+      serviceTitle: "AIPM Ethiopia Board Member",
       place: "Durame, Ethiopia",
 
       imageUrl: aberashImage,
       action: "Read More",
 
-      ethiopianStaff: "true",
+      ethiopianStaff: true,
 
       whoIsHe: `Ambaricho International Prayer and Mission Movement USA (AIPM USA), is a partner with Ambaricho International Prayer and Mission Movement 
             (AIPM in Ethiopia, a dynamic grassroots movement of prayer and missions outreach centered in Southern Ethiopia.  AIPM USA is directed by a Board 
@@ -216,13 +224,14 @@ const StaffAndBoardMembers = () => {
     {
       id: 7,
       name: "Kaleb Ayele",
-      servicePlace: "AIPM Ethiopia Board Member",
+      gender: "Male",
+      serviceTitle: "AIPM Ethiopia Board Member",
       place: "Addis Ababa, Ethiopia",
 
       imageUrl: kalebImage,
       action: "Read More",
 
-      ethiopianStaff: "true",
+      ethiopianStaff: true,
 
       whoIsHe: `Ambaricho International Prayer and Mission Movement USA (AIPM USA), is a partner with Ambaricho International Prayer and Mission Movement 
             (AIPM in Ethiopia, a dynamic grassroots movement of prayer and missions outreach centered in Southern Ethiopia.  AIPM USA is directed by a Board 
@@ -239,13 +248,14 @@ const StaffAndBoardMembers = () => {
     {
       id: 8,
       name: "Roberth Hogarth",
-      servicePlace: "AIPM USA Board Chairman",
+      gender: "Male",
+      serviceTitle: "AIPM USA Board Chairman",
       place: "Las Vegas, USA",
 
       imageUrl: bobImage,
       action: "Read More",
 
-      ethiopianStaff: "true",
+      ethiopianStaff: false,
 
       whoIsHe: `Ambaricho International Prayer and Mission Movement USA (AIPM USA), is a partner with Ambaricho International Prayer and Mission Movement 
             (AIPM in Ethiopia, a dynamic grassroots movement of prayer and missions outreach centered in Southern Ethiopia.  AIPM USA is directed by a Board 
@@ -262,13 +272,14 @@ const StaffAndBoardMembers = () => {
     {
       id: 9,
       name: "David Mai",
-      servicePlace: "AIPM USA Vice Board Chairman",
+      gender: "Male",
+      serviceTitle: "AIPM USA Vice Board Chairman",
       place: "Portland, Oregon, USA",
 
       imageUrl: maiImage,
       action: "Read More",
 
-      ethiopianStaff: "true",
+      ethiopianStaff: false,
 
       whoIsHe: `Ambaricho International Prayer and Mission Movement USA (AIPM USA), is a partner with Ambaricho International Prayer and Mission Movement 
             (AIPM in Ethiopia, a dynamic grassroots movement of prayer and missions outreach centered in Southern Ethiopia.  AIPM USA is directed by a Board 
@@ -285,13 +296,14 @@ const StaffAndBoardMembers = () => {
     {
       id: 10,
       name: "Justin Slemp",
-      servicePlace: "AIPM USA Board Member",
+      gender: "Male",
+      serviceTitle: "AIPM USA Board Member",
       place: "Portland, Oregon, USA",
 
       imageUrl: justinImage,
       action: "Read More",
 
-      ethiopianStaff: "true",
+      ethiopianStaff: false,
 
       whoIsHe: `Ambaricho International Prayer and Mission Movement USA (AIPM USA), is a partner with Ambaricho International Prayer and Mission Movement 
             (AIPM in Ethiopia, a dynamic grassroots movement of prayer and missions outreach centered in Southern Ethiopia.  AIPM USA is directed by a Board 
@@ -308,13 +320,14 @@ const StaffAndBoardMembers = () => {
     {
       id: 11,
       name: "Jeff Stetten",
-      servicePlace: "AIPM Board Member Secretary Treasure",
+      gender: "Male",
+      serviceTitle: "AIPM Board Member Secretary Treasure",
       place: "Las vegas, USA",
 
       imageUrl: jeffImage,
       action: "Read More",
 
-      ethiopianStaff: "true",
+      ethiopianStaff: false,
 
       whoIsHe: `Ambaricho International Prayer and Mission Movement USA (AIPM USA), is a partner with Ambaricho International Prayer and Mission Movement 
             (AIPM in Ethiopia, a dynamic grassroots movement of prayer and missions outreach centered in Southern Ethiopia.  AIPM USA is directed by a Board 
@@ -331,13 +344,14 @@ const StaffAndBoardMembers = () => {
     {
       id: 12,
       name: "Endashaw Areko",
-      servicePlace: "AIPM USA Board Member",
+      gender: "Male",
+      serviceTitle: "AIPM USA Board Member",
       place: "Portland, Oregon, USA",
 
       imageUrl: endashawImage,
       action: "Read More",
 
-      ethiopianStaff: "true",
+      ethiopianStaff: false,
 
       whoIsHe: `Ambaricho International Prayer and Mission Movement USA (AIPM USA), is a partner with Ambaricho International Prayer and Mission Movement 
             (AIPM in Ethiopia, a dynamic grassroots movement of prayer and missions outreach centered in Southern Ethiopia.  AIPM USA is directed by a Board 
@@ -354,13 +368,14 @@ const StaffAndBoardMembers = () => {
     {
       id: 13,
       name: "Larry Dombrow",
-      servicePlace: "AIPM USA Board Member",
+      gender: "Male",
+      serviceTitle: "AIPM USA Board Member",
       place: "Las Vegas, USA",
 
       imageUrl: larryImage,
       action: "Read More",
 
-      ethiopianStaff: "true",
+      ethiopianStaff: false,
 
       whoIsHe: `Ambaricho International Prayer and Mission Movement USA (AIPM USA), is a partner with Ambaricho International Prayer and Mission Movement 
             (AIPM in Ethiopia, a dynamic grassroots movement of prayer and missions outreach centered in Southern Ethiopia.  AIPM USA is directed by a Board 
@@ -377,13 +392,14 @@ const StaffAndBoardMembers = () => {
     {
       id: 14,
       name: "Dr. Bekele Shanko",
-      servicePlace: "AIPM USA Board Member",
+      gender: "Male",
+      serviceTitle: "AIPM USA Board Member",
       place: "Las Vegas, USA",
 
       imageUrl: bekeleImage,
       action: "Read More",
 
-      ethiopianStaff: "true",
+      ethiopianStaff: false,
 
       whoIsHe: `Ambaricho International Prayer and Mission Movement USA (AIPM USA), is a partner with Ambaricho International Prayer and Mission Movement 
             (AIPM in Ethiopia, a dynamic grassroots movement of prayer and missions outreach centered in Southern Ethiopia.  AIPM USA is directed by a Board 
@@ -400,13 +416,14 @@ const StaffAndBoardMembers = () => {
     {
       id: 15,
       name: "Steve Gundy",
-      servicePlace: "AIPM USA Staff - Administration Newsletter and Prayer",
+      gender: "Male",
+      serviceTitle: "AIPM USA Staff - Administration Newsletter and Prayer",
       place: "Las Vegas, USA",
 
       imageUrl: seteveImage,
       action: "Read More",
 
-      ethiopianStaff: "true",
+      ethiopianStaff: false,
 
       whoIsHe: `Ambaricho International Prayer and Mission Movement USA (AIPM USA), is a partner with Ambaricho International Prayer and Mission Movement 
             (AIPM in Ethiopia, a dynamic grassroots movement of prayer and missions outreach centered in Southern Ethiopia.  AIPM USA is directed by a Board 
@@ -423,13 +440,14 @@ const StaffAndBoardMembers = () => {
     {
       id: 16,
       name: "Nancy Mcmillan",
-      servicePlace: "AIPM USA Staff - Administration Giving and Support",
+      gender: "Female",
+      serviceTitle: "AIPM USA Staff - Administration Giving and Support",
       place: "Las Vegas, USA",
 
       imageUrl: nancyImage,
       action: "Read More",
 
-      ethiopianStaff: "true",
+      ethiopianStaff: false,
 
       whoIsHe: `Ambaricho International Prayer and Mission Movement USA (AIPM USA), is a partner with Ambaricho International Prayer and Mission Movement 
             (AIPM in Ethiopia, a dynamic grassroots movement of prayer and missions outreach centered in Southern Ethiopia.  AIPM USA is directed by a Board 
@@ -446,14 +464,15 @@ const StaffAndBoardMembers = () => {
     {
       id: 17,
       name: "Hollie Mendenhall",
-      servicePlace:
+      gender: "Female",
+      serviceTitle:
         "AIPM USA - Board Member Webmaster/ Social Media Coordinator",
       place: "Las Vegas, USA",
 
       imageUrl: hollieImage,
       action: "Read More",
 
-      ethiopianStaff: "true",
+      ethiopianStaff: false,
 
       whoIsHe: `Ambaricho International Prayer and Mission Movement USA (AIPM USA), is a partner with Ambaricho International Prayer and Mission Movement 
             (AIPM in Ethiopia, a dynamic grassroots movement of prayer and missions outreach centered in Southern Ethiopia.  AIPM USA is directed by a Board 
@@ -470,13 +489,14 @@ const StaffAndBoardMembers = () => {
     {
       id: 18,
       name: "Eyosias Desta Langena",
-      servicePlace: "AIPM Ethiopia Teach Team Leader",
+      gender: "Male",
+      serviceTitle: "AIPM Ethiopia Teach Team Leader",
       place: "Addis Ababa, Ethiopia",
 
       imageUrl: eyosiasImage,
       action: "Read More",
 
-      ethiopianStaff: "true",
+      ethiopianStaff: true,
 
       whoIsHe: `Ambaricho International Prayer and Mission Movement USA (AIPM USA), is a partner with Ambaricho International Prayer and Mission Movement 
             (AIPM in Ethiopia, a dynamic grassroots movement of prayer and missions outreach centered in Southern Ethiopia.  AIPM USA is directed by a Board 
@@ -491,13 +511,16 @@ const StaffAndBoardMembers = () => {
             of  Directors which function as an Incorporated Not for Profit Corporation in the United States, registered in the state of Indiana.`,
     },
   ];
+
+  const toggleMemberClick = (id) => {
+        navigate(`/staff-board-member/${id}`, {replace: true}, [navigate]);
+        console.log("tooggle clickedds", id)
+  }
   const fetchStaffMembers = async () => {
     setIsLoading(true);
-    const resp = await getStaffMembers();
+    await getStaffMembers();
     setIsLoading(false);
-    // dispatch(getStaffMembers(resp.data));
     dispatch(getStaffMembersAction(items));
-    console.log("staff members", staffsState);
   };
   useEffect(() => {
     fetchStaffMembers();
@@ -545,7 +568,7 @@ const StaffAndBoardMembers = () => {
                 : "8%",
             }}
           >
-            <StaffCardContainer staffMembers={staffsState} />
+            <StaffCardContainer staffMembers={staffsState} onMemberClick={toggleMemberClick}/>
           </div>
         </div>
       )}

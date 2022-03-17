@@ -195,7 +195,7 @@ const PrayerMovement = () => {
       <div className={classes.textImageContainer}>
         {isLoading ? (
           <div className={classes.circularProgress}>
-            <CircularProgress className={classes.circularColor} />
+            <CircularProgress />
           </div>
         ) : (
           <div>

@@ -162,7 +162,7 @@ const News = () => {
       <ImageWithTextCenter styles={styles} />
       {isLoading ? (
         <div className={classes.circularProgress}>
-          <CircularProgress className={classes.circularColor} />
+          <CircularProgress />
         </div>
       ) : (
         <div className={classes.textImageContainer}>

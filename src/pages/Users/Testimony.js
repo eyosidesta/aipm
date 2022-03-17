@@ -233,7 +233,7 @@ const Testimony = () => {
         >
           {isLoading ? (
             <div className={classes.circularProgress}>
-              <CircularProgress className={classes.circularColor} />
+              <CircularProgress />
             </div>
           ) : (
             <div>

@@ -5,7 +5,7 @@ import { useState } from "react";
 import AppAdmin from "./pages/Admin/AppAdmin";
 import AppUsers from "./pages/Users/AppUsers";
 function App() {
-  const [page, setPage] = useState("users");
+  const [page, setPage] = useState("admin");
   return (
     <Router>
       <div

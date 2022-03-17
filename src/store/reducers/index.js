@@ -16,7 +16,7 @@ const allReducers = combineReducers({
     testimonies: testimoniesReducer,
     testimony: testimonyReducer,
     staffMember: staffMemberReducer,
-    staffmembers: staffMembersReducer,
+    staffMembers: staffMembersReducer,
 });
 
 export default allReducers;
