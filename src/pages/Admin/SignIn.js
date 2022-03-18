@@ -6,7 +6,6 @@ import {
   Typography,
   Button,
   TextField,
-  Input,
   Checkbox,
   useMediaQuery,
   useTheme,
@@ -19,6 +18,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import aipm_logo from "../../assets/AIPM_LOGO.png";
 import siginImage from "../../assets/adminPageImages/signInImage.png";
+import SnackBar from "../../components/Shared/SnackBar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -87,6 +87,9 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [message, setMessage] = useState("Logged In Successful");
+  const [type, setType] = useState("success");
   const signInState = useSelector((state) => state.isLogged);
 
   const onEmailChange = (event) => {
@@ -102,7 +105,10 @@ const SignIn = () => {
     const res = await signIn(credentials);
     setIsLoading(false);
     dispatch(signInAction());
-    navigate("/", { replace: true }, [navigate]);
+    setOpenSnackbar(true);
+    setTimeout(() => {
+      navigate("/", { replace: true }, [navigate]);
+    }, 3000);
   };
 
   const theme = useTheme();
@@ -189,6 +195,7 @@ const SignIn = () => {
           />
         </Grid>
       </Grid>
+      <SnackBar openSnackbar={openSnackbar} message={message} type={type} />
     </div>
   );
 };

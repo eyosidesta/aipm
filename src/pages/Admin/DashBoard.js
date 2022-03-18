@@ -1,9 +1,10 @@
 import React from "react";
+import SideNav from "./SideNav";
 
 const DashBoard = () => {
     return (
         <div>
-            DashBoard
+            <SideNav />
         </div>
     )
 }

@@ -7,7 +7,6 @@ export const signIn = async (credentials) => {
         body: credentials.password,
         userId: 1,
     }).then(res => {
-        console.log("response is ", res)
         return res;
     }).catch(err => {
         return err;
