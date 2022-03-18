@@ -490,7 +490,7 @@ const StaffAndBoardMembers = () => {
       id: 18,
       name: "Eyosias Desta Langena",
       gender: "Male",
-      serviceTitle: "AIPM Ethiopia Teach Team Leader",
+      serviceTitle: "AIPM Ethiopia Tech Team Leader",
       place: "Addis Ababa, Ethiopia",
 
       imageUrl: eyosiasImage,

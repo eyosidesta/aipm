@@ -3,7 +3,7 @@ import { baseUrl } from "../constants/baseURL";
 
 export const getStaffMembers = async () => {
   return await axios
-    .get(baseUrl)
+    .get(`${baseUrl}/photos`)
     .then((res) => {
       return res;
     })
@@ -14,7 +14,7 @@ export const getStaffMembers = async () => {
 
 export const getStaffMember = async (id) => {
   return await axios
-    .get(`${baseUrl}/${id}`)
+    .get(`${baseUrl}/photos/${id}`)
     .then((res) => {
       return res;
     })
