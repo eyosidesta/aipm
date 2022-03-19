@@ -1,39 +1,32 @@
 import React, { useState } from "react";
-import { Grid, Icon, makeStyles, Typography } from "@material-ui/core";
+import { makeStyles, Typography } from "@material-ui/core";
 import { DEEP_BLUE_COLOR, WHITE_COLOR } from "../../utils/constants/colors";
+import AdminForm from "../../components/Admin/AddAdmin/AdminForm";
+import TitleWithIcon from "../../components/Admin/Shared/TitleWithIcon";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-      color: DEEP_BLUE_COLOR
+    color: DEEP_BLUE_COLOR,
   },
-  dropDownIcon: {
-      marginTop: 2,
-      paddingLeft: 10
-  },
-  titleContainer: {
-      border: "solid",
-      width: 170,
-      textAlign: "center",
-      backgroundColor: WHITE_COLOR,
-      paddingLeft: "2%",
-      borderRadius: 5
+  formContainer: {
+    marginTop: 10
   }
 }));
 
 const AddAdmin = () => {
   const classes = useStyles();
-  const [iconName, setIconName] = useState("star");
+  const [isIconUp, setIsIconUp] = useState(false);
   return (
     <div className={classes.root}>
-      <Grid container className={classes.titleContainer}>
-          <Grid item>
-        <Typography variant="h6">Add Admin</Typography>
-        </Grid>
-        <Grid item className={classes.dropDownIcon}>
-        <Icon fontSize="small" className="fa fa-caret-down" style={{color: "red", zIndex: 100}} />
-        {/* <Icon>{iconName}</Icon> */}
-        </Grid>
-        </Grid>
+      <TitleWithIcon
+        title="Add Admin"
+        isIconUp={isIconUp}
+        setIsIconUp={setIsIconUp}
+      />
+      {isIconUp && 
+      <div className={classes.formContainer}>
+        <AdminForm />
+        </div>}
     </div>
   );
 };
