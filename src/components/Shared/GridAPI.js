@@ -5,14 +5,12 @@ import {
   Typography,
   makeStyles,
   Icon,
-  Link,
   ClickAwayListener,
   Grow,
   Paper,
   Popper,
   MenuItem,
   MenuList,
-  Menu,
 } from "@material-ui/core";
 import { BACKGROUND_COLOR } from "../../utils/constants/colors";
 import { DEEP_BLUE_COLOR } from "../../utils/constants/colors";

@@ -45,7 +45,7 @@ function Header() {
     {
       id: 1,
       text: "Ministries",
-      defaultIcon: "fa fa-caret-down textColorn",
+      defaultIcon: "fa fa-caret-down textColor",
       newIcon: "fa fa-caret-up textColor",
       menu: [
         { name: "Prayer Movement", onMenuClick: () => menuItemsClicked("prayer-movement") },

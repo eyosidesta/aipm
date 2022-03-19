@@ -7,9 +7,9 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
+import { useNavigate } from "react-router-dom"
 import {
   DEEP_BLUE_COLOR,
-  FOOTER_COLOR,
   WHITE_COLOR,
 } from "../../../utils/constants/colors";
 import { useLocation } from "react-router-dom";
@@ -22,11 +22,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SideNavTableContent = ({ data }) => {
-  const location = useLocation();
   const classes = useStyles();
+  const navigate = useNavigate();
+  const location = useLocation();
+  
   const handleClick = (item) => {
-    console.log("id is: ", item.id);
-    console.log("title", item.title);
+    navigate(`${item.url}`, {replace: true}, [navigate]);
   };
   return (
     <TableRow>

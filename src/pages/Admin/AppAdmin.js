@@ -1,15 +1,18 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
-import SignIn from "./SignIn";
+import { Routes, Route, useLocation } from "react-router-dom";
 import DashBoard from "./DashBoard";
+import SideNav from "./SideNav";
+import SignIn from "./SignIn";
 
 const AppAdmin = () => {
+    const location = useLocation();
     return (
         <div>
-            <Routes>
+            {location.pathname !== "/login" ? <SideNav /> : <SignIn />}
+            {/* <Routes>
                 <Route path="/login" exact element={<SignIn />} />
                 <Route path="/" exact element={<DashBoard />}/>
-            </Routes>
+            </Routes> */}
         </div>
     )
 }
