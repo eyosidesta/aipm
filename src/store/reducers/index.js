@@ -3,6 +3,7 @@ import { universityStudentsMovementReducer, universityStudentsMovementsReducer }
 import {newsReducer} from './news';
 import { testimoniesReducer, testimonyReducer } from "./testimony";
 import { staffMemberReducer, staffMembersReducer } from './staffMembers';
+import { adminReducer } from './admins';
 import adminLoggedReducer from "./isLogged";
 import prayerMovementReducer from "./prayerMovement";
 
@@ -17,6 +18,7 @@ const allReducers = combineReducers({
     testimony: testimonyReducer,
     staffMember: staffMemberReducer,
     staffMembers: staffMembersReducer,
+    admins: adminReducer,
 });
 
 export default allReducers;

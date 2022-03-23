@@ -35,20 +35,37 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const News = () => {
-  useEffect(() => {
-    fetchNews();
-  }, []);
 
-  const fetchNews = async () => {
-    setIsLoading(true);
-    const res = await getNews();
-    setIsLoading(false);
-    // dispatch({
-    //     type: "GET_NEWS",
-    //     payload: res
-    // })
-    dispatch(getNewsAction(res.data));
+  const newsState = useSelector((state) => state.news);
+  const classes = useStyles();
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState(newsState ? newsState.slice(0, 3) : []);
+  const dispatch = useDispatch();
+
+  const handlePaginationChange = (event, value) => {
+    setData(newsState.slice((value - 1) * 3, value * 3));
   };
+  const count =
+  newsState.length / 3 - parseInt(newsState.length / 3) !== 0
+      ? parseInt(newsState.length / 3) + 1
+      : parseInt(newsState.length / 3);
+  const styles = {
+    width: 80,
+    height: 60,
+    backgroundImage: backgroundImage,
+    title: "AIPM News",
+    detail: {
+      description: "",
+      titleFont: "h6",
+      descriptionFont: "body2",
+    },
+    borderRadius: 15,
+  };
+  const titleStyle = {
+    textAlign: "start",
+    marginBottom: 10,
+  };
+
   const items = [
     {
       title: "January 20, Ambaricho Mountain Program",
@@ -128,35 +145,21 @@ const News = () => {
       imageUrl: `${newsImageFive}`,
     },
   ];
-  const newNews = useSelector((state) => state.news);
-  const classes = useStyles();
-  const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState(items.slice(0, 3));
-  const dispatch = useDispatch();
+  const fetchNews = async () => {
+    setIsLoading(true);
+    const res = await getNews();
+    setIsLoading(false);
+    // dispatch({
+    //     type: "GET_NEWS",
+    //     payload: res
+    // })
+    dispatch(getNewsAction(items));
+    setData(items.slice(0, 3))
+  };
+  useEffect(() => {
+    fetchNews();
+  }, []);
 
-  const handleChange = (event, value) => {
-    setData(items.slice((value - 1) * 3, value * 3));
-  };
-  const count =
-    items.length / 3 - parseInt(items.length / 3) !== 0
-      ? parseInt(items.length / 3) + 1
-      : parseInt(items.length / 3);
-  const styles = {
-    width: 80,
-    height: 60,
-    backgroundImage: backgroundImage,
-    title: "AIPM News",
-    detail: {
-      description: "",
-      titleFont: "h6",
-      descriptionFont: "body2",
-    },
-    borderRadius: 15,
-  };
-  const titleStyle = {
-    textAlign: "start",
-    marginBottom: 10,
-  };
   return (
     <>
       <ImageWithTextCenter styles={styles} />
@@ -172,7 +175,7 @@ const News = () => {
           {items.length > 3 && (
             <Pagination
               className={classes.pagination}
-              onChange={handleChange}
+              onChange={handlePaginationChange}
               count={count}
               variant="outlined"
               shape="rounded"

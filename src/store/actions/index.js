@@ -51,3 +51,10 @@ export const getStaffMemberAction = (data) => {
         payload: data
     }
 }
+
+export const getAdminListAction = (data) => {
+    return {
+        type: "GET_ADMINS",
+        payload: data
+    }
+}

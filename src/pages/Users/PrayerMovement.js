@@ -46,6 +46,37 @@ const useStyles = makeStyles((theme) => ({
 }));
 const PrayerMovement = () => {
   const classes = useStyles();
+  
+  const prayerMovementState = useSelector((state) => state.prayerMovement);
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState(prayerMovementState ? prayerMovementState.slice(0, 3) : []);
+
+  const handlePaginationChange = (event, value) => {
+    setData(prayerMovementState.slice((value - 1) * 3, value * 3));
+  };
+  const count =
+  prayerMovementState.length / 3 - parseInt(prayerMovementState.length / 3) !== 0
+      ? parseInt(prayerMovementState.length / 3) + 1
+      : parseInt(prayerMovementState.length / 3);
+
+  const styles = {
+    width: 80,
+    height: 60,
+    backgroundImage: backgroundImage,
+    title: "Prayer Movement",
+    detail: {description:
+      "God has been doing a miracle in AIPM Ministry. We have seen God's sovereign hand through prayer",
+      titleFont: "h6",
+      descriptionFont: "body2",
+    },
+    borderRadius: 15,
+  };
+  const titleStyle = {
+    textAlign: "center",
+    marginBottom: 10,
+  };
+
   const items = [
     {
       title: "January 20, Ambaricho Mountain Program",
@@ -125,46 +156,18 @@ const PrayerMovement = () => {
       imageUrl: `${newsImageFive}`,
     },
   ];
-  const prayerMovementState = useSelector((state) => state.prayerMovement);
-  const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState(items ? items.slice(0, 3) : []);
 
   const fetchPrayerMovement = async () => {
     setIsLoading(true);
     const res = await getPrayerMovements();
     setIsLoading(false);
-    dispatch(getPrayerMovementAction(res.data));
+    dispatch(getPrayerMovementAction(items));
+    setData(items.slice(0, 3))
   };
 
   useEffect(() => {
     fetchPrayerMovement();
   }, []);
-
-  const handleChange = (event, value) => {
-    setData(items.slice((value - 1) * 3, value * 3));
-  };
-  const count =
-    items.length / 3 - parseInt(items.length / 3) !== 0
-      ? parseInt(items.length / 3) + 1
-      : parseInt(items.length / 3);
-
-  const styles = {
-    width: 80,
-    height: 60,
-    backgroundImage: backgroundImage,
-    title: "Prayer Movement",
-    detail: {description:
-      "God has been doing a miracle in AIPM Ministry. We have seen God's sovereign hand through prayer",
-      titleFont: "h6",
-      descriptionFont: "body2",
-    },
-    borderRadius: 15,
-  };
-  const titleStyle = {
-    textAlign: "center",
-    marginBottom: 10,
-  };
   return (
     <div className={classes.root}>
       <ImageWithTextCenter styles={styles} />
@@ -214,7 +217,7 @@ const PrayerMovement = () => {
         {items.length > 3 && (
           <Pagination
             className={classes.pagination}
-            onChange={handleChange}
+            onChange={handlePaginationChange}
             count={count}
             variant="outlined"
             shape="rounded"
