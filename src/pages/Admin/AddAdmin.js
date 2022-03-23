@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { makeStyles, Typography } from "@material-ui/core";
 import { DEEP_BLUE_COLOR, WHITE_COLOR } from "../../utils/constants/colors";
 import AdminForm from "../../components/Admin/AddAdmin/AdminForm";
+import AdminList from "../../components/Admin/AddAdmin/AdminList";
 import TitleWithIcon from "../../components/Admin/Shared/TitleWithIcon";
 
 const useStyles = makeStyles((theme) => ({
@@ -10,6 +11,9 @@ const useStyles = makeStyles((theme) => ({
   },
   formContainer: {
     marginTop: 10
+  },
+  adminListContainer: {
+    marginTop: 20
   }
 }));
 
@@ -27,6 +31,9 @@ const AddAdmin = () => {
       <div className={classes.formContainer}>
         <AdminForm />
         </div>}
+        <div className={classes.adminListContainer}>
+          <AdminList />
+        </div>
     </div>
   );
 };

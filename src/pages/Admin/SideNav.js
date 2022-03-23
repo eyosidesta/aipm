@@ -34,30 +34,30 @@ const SideNav = () => {
           url: "/university-students",
           onClick: () => console.log("wow kasu onclick ", 5),
         },
-        {
-          id: 6,
-          title: "AIPM Projects",
-          url: "/aipm-projects",
-          onClick: () => console.log("wow kasu onclick ", 6),
-        },
+        // {
+        //   id: 6,
+        //   title: "AIPM Projects",
+        //   url: "/aipm-projects",
+        //   onClick: () => console.log("wow kasu onclick ", 6),
+        // },
         {
           id: 7,
           title: "AIPM Staffs",
           url: "/aipm-staffs",
           onClick: () => console.log("wow kasu onclick ", 7),
         },
-        {
-          id: 8,
-          title: "AIPM Missionaries",
-          url: "/aipm-missionaries",
-          onClick: () => console.log("wow kasu onclick ", 8),
-        },
-        {
-          id: 9,
-          title: "AIPM Supporters",
-          url: "/aipm-supporters",
-          onClick: () => console.log("wow kasu onclick ", 9),
-        },
+        // {
+        //   id: 8,
+        //   title: "AIPM Missionaries",
+        //   url: "/aipm-missionaries",
+        //   onClick: () => console.log("wow kasu onclick ", 8),
+        // },
+        // {
+        //   id: 9,
+        //   title: "AIPM Supporters",
+        //   url: "/aipm-supporters",
+        //   onClick: () => console.log("wow kasu onclick ", 9),
+        // },
         {
           id: 10,
           title: "My Profile",
