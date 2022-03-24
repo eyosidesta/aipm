@@ -19,7 +19,7 @@ import {
   WHITE_COLOR,
   BACKGROUND_COLOR,
 } from "../../../utils/constants/colors";
-import { addAdmin } from "../../../utils/ApiService/admins.api";
+import { addStaffmember, updatStaffMember } from "../../../utils/ApiService/staff.members";
 import SnackBar from "../../Shared/SnackBar";
 
 const useStyles = makeStyles((theme) => ({
@@ -84,69 +84,119 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const StaffForm = () => {
+const StaffForm = ({ data }) => {
   const classes = useStyles();
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [type, setType] = useState("success");
   const [message, setMessage] = useState("Admin Added Successfully");
   const [loading, setLoading] = useState(false);
-  const [credentials, setCredentials] = useState({
-    fullName: "",
-    gender: "",
-    staffLocation: "",
-    aipmService: "",
-  });
+  const [staffInfo, setStaffInfo] = useState(
+    data
+      ? {
+          id: data.id,
+          fullName: data.fullName,
+          gender: data.gender,
+          staffLocation: data.staffLocation,
+          aipmService: data.aipmService,
+          whoIsHe: data.whoIsHe,
+          responsibility: data.responsibility,
+          passion: data.passion,
+        }
+      : {
+          fullName: "",
+          gender: "",
+          staffLocation: "",
+          aipmService: "",
+          whoIsHe: "",
+          responsibility: "",
+          passion: "",
+        }
+  );
 
   const theme = useTheme();
   const greaterThanExtremeSmall = useMediaQuery(theme.breakpoints.up("sm"));
 
   const handleFullNameChange = (event) => {
     let updateFullName = { fullName: event.target.value };
-    setCredentials((credentials) => ({
-      ...credentials,
+    setStaffInfo((staffInfo) => ({
+      ...staffInfo,
       ...updateFullName,
     }));
   };
   const handleGenderChange = (event) => {
     let updateGender = { gender: event.target.value };
-    setCredentials((credentials) => ({ ...credentials, ...updateGender }));
+    setStaffInfo((staffInfo) => ({ ...staffInfo, ...updateGender }));
   };
   const handleStaffLocationChange = (event) => {
     let updateStaffLocation = { staffLocation: event.target.value };
-    setCredentials((credentials) => ({
-      ...credentials,
+    setStaffInfo((staffInfo) => ({
+      ...staffInfo,
       ...updateStaffLocation,
     }));
   };
   const handleServiceChange = (event) => {
     let updateAipmService = { aipmService: event.target.value };
-    setCredentials((credentials) => ({
-      ...credentials,
+    setStaffInfo((staffInfo) => ({
+      ...staffInfo,
       ...updateAipmService,
+    }));
+  };
+  const handleAboutChange = (event) => {
+    let updateAboutPerson = { whoIsHe: event.target.value };
+    setStaffInfo((staffInfo) => ({
+      ...staffInfo,
+      ...updateAboutPerson,
+    }));
+  };
+  const handleResponsibilityChange = (event) => {
+    let updateResponsibility = { responsibility: event.target.value };
+    setStaffInfo((staffInfo) => ({
+      ...staffInfo,
+      ...updateResponsibility,
+    }));
+  };
+
+  const handlePassionChange = (event) => {
+    let updatePassion = { passion: event.target.value };
+    setStaffInfo((staffInfo) => ({
+      ...staffInfo,
+      ...updatePassion,
     }));
   };
 
   const handleSubmitClick = async () => {
     setLoading(true);
-    const res = await addAdmin(credentials);
-    if (!(res.statusText == "")) {
-      setMessage("Error! Something went wrong");
-      setType("error");
+    if (!data) {
+      const res = await addStaffmember(staffInfo);
+      if (!(res.statusText == "")) {
+        setMessage("Error! Something went wrong");
+        setType("error");
+      }
+    } else {
+      const res = await updatStaffMember(staffInfo);
+      if(!(res.statusText == "")) {
+        setMessage('Error! Unable to update staff member info, try again');
+        setType("error");
+      }
     }
     setLoading(false);
-    setOpenSnackbar(true);
-    setTimeout(() => {
-      setOpenSnackbar(false);
-      handleCancelClick();
-    }, 3000);
+      setOpenSnackbar(true);
+      setTimeout(() => {
+        setOpenSnackbar(false);
+        window.location.reload(false)
+        // handleCancelClick();
+      }, 3000);
   };
 
   const handleCancelClick = () => {
-    setCredentials(() => ({
+    setStaffInfo(() => ({
       fullName: "",
       gender: "",
       staffLocation: "",
       aipmService: "",
+      responsibility: "",
+      whoIsHe: "",
+      passion: "",
     }));
   };
   return (
@@ -179,7 +229,7 @@ const StaffForm = () => {
                 {false ? (
                   <TextField
                     id="standard-basic"
-                    value={credentials.fullName}
+                    value={staffInfo.fullName}
                     style={{ minWidth: greaterThanExtremeSmall ? 300 : 200 }}
                   />
                 ) : (
@@ -187,7 +237,7 @@ const StaffForm = () => {
                     id="standard-basic"
                     error
                     helperText="full name is required"
-                    value={credentials.fullName}
+                    value={staffInfo.fullName}
                     onChange={handleFullNameChange}
                     style={{ minWidth: greaterThanExtremeSmall ? 300 : 200 }}
                   />
@@ -203,7 +253,7 @@ const StaffForm = () => {
                     <Select
                       labelId="demo-simple-select-label-gender"
                       id="demo-simple-select-gender"
-                      value={credentials.gender}
+                      value={staffInfo.gender}
                       onChange={handleGenderChange}
                     >
                       <MenuItem value="Male">Male</MenuItem>
@@ -216,17 +266,17 @@ const StaffForm = () => {
                   <FormControl
                     style={{ minWidth: greaterThanExtremeSmall ? 300 : 200 }}
                   >
-                    <InputLabel id="demo-simple-select-label-gender">
+                    <InputLabel id="demo-simple-select-label-staff">
                       staff
                     </InputLabel>
                     <Select
-                      labelId="demo-simple-select-label-gender"
-                      id="demo-simple-select-gender"
-                      value={credentials.staffLocation}
+                      labelId="demo-simple-select-label-staff"
+                      id="demo-simple-select-staff"
+                      value={staffInfo.staffLocation}
                       onChange={handleStaffLocationChange}
                     >
-                      <MenuItem value="Male">Ethiopia</MenuItem>
-                      <MenuItem value="Female">USA</MenuItem>
+                      <MenuItem value="Ethiopia">Ethiopia</MenuItem>
+                      <MenuItem value="USA">USA</MenuItem>
                     </Select>
                   </FormControl>
                 </div>
@@ -234,7 +284,7 @@ const StaffForm = () => {
                 <TextField
                   id="outlined-multiline-static"
                   placeholder="ex. AIPM Ethiopia board member"
-                  value={credentials.aipmService}
+                  value={staffInfo.aipmService}
                   onChange={handleServiceChange}
                   multiline
                   rows={4}
@@ -245,8 +295,8 @@ const StaffForm = () => {
                 <TextField
                   id="outlined-multiline-static"
                   placeholder="describe this guy in short"
-                  value={credentials.aipmService}
-                  onChange={handleServiceChange}
+                  value={staffInfo.whoIsHe}
+                  onChange={handleAboutChange}
                   multiline
                   rows={4}
                   className={classes.multilineTextField}
@@ -256,8 +306,8 @@ const StaffForm = () => {
                 <TextField
                   id="outlined-multiline-static"
                   placeholder="describe what this guy is doing for aipm"
-                  value={credentials.aipmService}
-                  onChange={handleServiceChange}
+                  value={staffInfo.responsibility}
+                  onChange={handleResponsibilityChange}
                   multiline
                   rows={4}
                   className={classes.multilineTextField}
@@ -267,8 +317,8 @@ const StaffForm = () => {
                 <TextField
                   id="outlined-multiline-static"
                   placeholder="on what thing this guy is more passionate"
-                  value={credentials.aipmService}
-                  onChange={handleServiceChange}
+                  value={staffInfo.passion}
+                  onChange={handlePassionChange}
                   multiline
                   rows={4}
                   className={classes.multilineTextField}

@@ -28,7 +28,7 @@ const AdminStaff = () => {
       />
       {isIconUp && 
       <div className={classes.formContainer}>
-        <StaffForm />
+        <StaffForm data={false}/>
         </div>}
         <div className={classes.adminListContainer}>
           <StaffList />

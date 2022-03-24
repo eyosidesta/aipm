@@ -1,5 +1,6 @@
 import axios from "axios";
 import { baseUrl } from "../constants/baseURL";
+
 export const addAdmin = async (credentials) => {
   return await axios
     .post(`${baseUrl}/photos`, {

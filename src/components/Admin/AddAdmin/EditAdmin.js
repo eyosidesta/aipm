@@ -3,7 +3,7 @@ import React from "react";
 const EditAdmin = () => {
     return (
         <div>
-            yes we do
+            Editing Admin not done yet
         </div>
     )
 }

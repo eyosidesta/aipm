@@ -6,8 +6,9 @@ import {
   WHITE_COLOR,
   DEEP_BLUE_COLOR,
 } from "../../../utils/constants/colors";
-import AdminListItemDetail from "./AdminListItemDetail";
-import EditAdmin from "./EditAdmin";
+import EditStaff from "./EditStaff";
+import StaffListItemDetail from "./StaffListItemDetail";
+import StaffForm from "./StaffForm";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,12 +30,12 @@ const AdminListItem = ({ data }) => {
   return (
     <div className={classes.root}>
       {editMode ? (
-          <AdminListItemDetail data={data}
+          <StaffListItemDetail data={data}
           isIconUp={isIconUp}
           setIsIconUp={setIsIconUp}
           setEditMode={setEditMode} />
       ) : (
-        <EditAdmin />
+        <StaffForm data={data} />
       )}
     </div>
   );
