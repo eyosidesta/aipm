@@ -21,9 +21,9 @@ import {
   BACKGROUND_COLOR,
 } from "../../../utils/constants/colors";
 import {
-  addStaffmember,
-  updatStaffMember,
-} from "../../../utils/ApiService/staff.members";
+  addTestimony,
+  updatTestimony,
+} from "../../../utils/ApiService/testimony.api";
 import SnackBar from "../../Shared/SnackBar";
 
 const useStyles = makeStyles((theme) => ({
@@ -88,32 +88,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const StaffForm = ({ data, setEditMode }) => {
+const TestimonyForm = ({ data, setEditMode }) => {
   const classes = useStyles();
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [type, setType] = useState("success");
-  const [message, setMessage] = useState("Staff Member Added Successfully!");
+  const [message, setMessage] = useState("Testimony Added Successfully!");
   const [loading, setLoading] = useState(false);
-  const [staffInfo, setStaffInfo] = useState(
+  const [testimonyInfo, setTestimonyfInfo] = useState(
     data
       ? {
           id: data.id,
           fullName: data.fullName,
-          gender: data.gender,
-          staffLocation: data.staffLocation,
-          aipmService: data.aipmService,
-          whoIsHe: data.whoIsHe,
-          responsibility: data.responsibility,
-          passion: data.passion,
+          title: "",
+          servicePlace: data.servicePlace,
+          specialThing: data.specialThing,
+          descriptionOne: data.descriptionOne,
+          descriptionTwo: data.descriptionTwo,
         }
       : {
           fullName: "",
-          gender: "",
-          staffLocation: "",
-          aipmService: "",
-          whoIsHe: "",
-          responsibility: "",
-          passion: "",
+          servicePlace: "",
+          specialThing: "",
+          descriptionOne: "",
+          descriptionTwo: "",
         }
   );
 
@@ -122,67 +119,56 @@ const StaffForm = ({ data, setEditMode }) => {
 
   const handleFullNameChange = (event) => {
     let updateFullName = { fullName: event.target.value };
-    setStaffInfo((staffInfo) => ({
-      ...staffInfo,
+    setTestimonyfInfo((testimonyInfo) => ({
+      ...testimonyInfo,
       ...updateFullName,
     }));
   };
-  const handleGenderChange = (event) => {
-    let updateGender = { gender: event.target.value };
-    setStaffInfo((staffInfo) => ({ ...staffInfo, ...updateGender }));
-  };
-  const handleStaffLocationChange = (event) => {
-    let updateStaffLocation = { staffLocation: event.target.value };
-    setStaffInfo((staffInfo) => ({
-      ...staffInfo,
-      ...updateStaffLocation,
+  const handleServicePlaceChange = (event) => {
+    let updateServicePlace = { servicePlace: event.target.value };
+    setTestimonyfInfo((testimonyInfo) => ({
+      ...testimonyInfo,
+      ...updateServicePlace,
     }));
   };
-  const handleServiceChange = (event) => {
-    let updateAipmService = { aipmService: event.target.value };
-    setStaffInfo((staffInfo) => ({
-      ...staffInfo,
-      ...updateAipmService,
+  const handleSpecialThingChange = (event) => {
+    let updateSpecialThing = { specialThing: event.target.value };
+    setTestimonyfInfo((testimonyInfo) => ({
+      ...testimonyInfo,
+      ...updateSpecialThing,
     }));
   };
-  const handleAboutChange = (event) => {
-    let updateAboutPerson = { whoIsHe: event.target.value };
-    setStaffInfo((staffInfo) => ({
-      ...staffInfo,
-      ...updateAboutPerson,
-    }));
-  };
-  const handleResponsibilityChange = (event) => {
-    let updateResponsibility = { responsibility: event.target.value };
-    setStaffInfo((staffInfo) => ({
-      ...staffInfo,
-      ...updateResponsibility,
+  const handleDescriptionOneChange = (event) => {
+    let updateDescriptionOne = { descriptionOne: event.target.value };
+    setTestimonyfInfo((testimonyInfo) => ({
+      ...testimonyInfo,
+      ...updateDescriptionOne,
     }));
   };
 
-  const handlePassionChange = (event) => {
-    let updatePassion = { passion: event.target.value };
-    setStaffInfo((staffInfo) => ({
-      ...staffInfo,
-      ...updatePassion,
+  const handleDescriptionTwoChange = (event) => {
+    let updateDescriptionTwo = { descriptionTwo: event.target.value };
+    setTestimonyfInfo((testimonyInfo) => ({
+      ...testimonyInfo,
+      ...updateDescriptionTwo,
     }));
   };
 
   const handleSubmitClick = async () => {
     setLoading(true);
     if (!data) {
-      const res = await addStaffmember(staffInfo);
+      const res = await addTestimony(testimonyInfo);
       if (!(res.statusText == "")) {
-        setMessage("Error! Unable to add staff member");
+        setMessage("Error! Unable to add testimony, try again");
         setType("error");
       }
     } else {
-      const res = await updatStaffMember(staffInfo);
+      const res = await updatTestimony(testimonyInfo);
       if (!(res.statusText == "")) {
-        setMessage("Error! Unable to update staff member info, try again");
+        setMessage("Error! Unable to update testimony, try again");
         setType("error");
       } else {
-        setMessage("Staff Member Updated Successfully!")
+        setMessage("Testimony Updated Successfully!")
       }
     }
     setLoading(false);
@@ -194,14 +180,12 @@ const StaffForm = ({ data, setEditMode }) => {
   };
 
   const handleCancelClick = () => {
-    setStaffInfo(() => ({
+    setTestimonyfInfo(() => ({
       fullName: "",
-      gender: "",
-      staffLocation: "",
-      aipmService: "",
-      responsibility: "",
-      whoIsHe: "",
-      passion: "",
+      servicePlace: "",
+      descriptionOne: "",
+      specialThing: "",
+      descriptionTwo: "",
     }));
   };
 
@@ -239,7 +223,7 @@ const StaffForm = ({ data, setEditMode }) => {
                 {false ? (
                   <TextField
                     id="standard-basic"
-                    value={staffInfo.fullName}
+                    value={testimonyInfo.fullName}
                     style={{ minWidth: greaterThanExtremeSmall ? 300 : 200 }}
                   />
                 ) : (
@@ -247,88 +231,50 @@ const StaffForm = ({ data, setEditMode }) => {
                     id="standard-basic"
                     error
                     helperText="full name is required"
-                    value={staffInfo.fullName}
+                    value={testimonyInfo.fullName}
                     onChange={handleFullNameChange}
                     style={{ minWidth: greaterThanExtremeSmall ? 300 : 200 }}
                   />
                 )}
-                <Typography variant="h6">Gender</Typography>
-                <div>
-                  <FormControl
-                    style={{ minWidth: greaterThanExtremeSmall ? 300 : 200 }}
-                  >
-                    <InputLabel id="demo-simple-select-label-gender">
-                      Gender
-                    </InputLabel>
-                    <Select
-                      labelId="demo-simple-select-label-gender"
-                      id="demo-simple-select-gender"
-                      value={staffInfo.gender}
-                      onChange={handleGenderChange}
-                    >
-                      <MenuItem value="Male">Male</MenuItem>
-                      <MenuItem value="Female">Female</MenuItem>
-                    </Select>
-                  </FormControl>
-                </div>
-                <Typography variant="h6">Staff Location</Typography>
-                <div>
-                  <FormControl
-                    style={{ minWidth: greaterThanExtremeSmall ? 300 : 200 }}
-                  >
-                    <InputLabel id="demo-simple-select-label-staff">
-                      staff
-                    </InputLabel>
-                    <Select
-                      labelId="demo-simple-select-label-staff"
-                      id="demo-simple-select-staff"
-                      value={staffInfo.staffLocation}
-                      onChange={handleStaffLocationChange}
-                    >
-                      <MenuItem value="Ethiopia">Ethiopia</MenuItem>
-                      <MenuItem value="USA">USA</MenuItem>
-                    </Select>
-                  </FormControl>
-                </div>
-                <Typography variant="h6">AIPM Service</Typography>
+                <Typography variant="h6">Service Place</Typography>
                 <TextField
                   id="outlined-multiline-static"
-                  placeholder="ex. AIPM Ethiopia board member"
-                  value={staffInfo.aipmService}
-                  onChange={handleServiceChange}
+                  placeholder="ex. Missionary at Senbete Shalla"
+                  value={testimonyInfo.servicePlace}
+                  onChange={handleServicePlaceChange}
                   multiline
                   rows={4}
                   className={classes.multilineTextField}
                   style={{ minWidth: greaterThanExtremeSmall ? 300 : 200 }}
                 />
-                <Typography variant="h6">Write About this person</Typography>
+                <Typography variant="h6">Special Thing</Typography>
                 <TextField
                   id="outlined-multiline-static"
-                  placeholder="describe this guy in short"
-                  value={staffInfo.whoIsHe}
-                  onChange={handleAboutChange}
+                  placeholder="ex. The First AIPM Ministry Missionary"
+                  value={testimonyInfo.specialThing}
+                  onChange={handleSpecialThingChange}
                   multiline
                   rows={4}
                   className={classes.multilineTextField}
                   style={{ minWidth: greaterThanExtremeSmall ? 300 : 200 }}
                 />
-                <Typography variant="h6">AIPM Responsibility</Typography>
+                <Typography variant="h6">Detail Description</Typography>
                 <TextField
                   id="outlined-multiline-static"
-                  placeholder="describe what this guy is doing for aipm"
-                  value={staffInfo.responsibility}
-                  onChange={handleResponsibilityChange}
+                  placeholder="write the testimony in detail"
+                  value={testimonyInfo.descriptionOne}
+                  onChange={handleDescriptionOneChange}
                   multiline
                   rows={4}
                   className={classes.multilineTextField}
                   style={{ minWidth: greaterThanExtremeSmall ? 300 : 200 }}
                 />
-                <Typography variant="h6">His/Her Passion</Typography>
+                <Typography variant="h6">Add More Detail</Typography>
                 <TextField
                   id="outlined-multiline-static"
-                  placeholder="on what thing this guy is more passionate"
-                  value={staffInfo.passion}
-                  onChange={handlePassionChange}
+                  placeholder="add additional detail here"
+                  value={testimonyInfo.descriptionTwo}
+                  onChange={handleDescriptionTwoChange}
                   multiline
                   rows={4}
                   className={classes.multilineTextField}
@@ -379,4 +325,4 @@ const StaffForm = ({ data, setEditMode }) => {
   );
 };
 
-export default StaffForm;
+export default TestimonyForm;

@@ -142,7 +142,7 @@ const AdminForm = () => {
     setLoading(true);
     const res = await addAdmin(credentials);
     if(!(res.statusText == "")) {
-      setMessage("Error! Something went wrong")
+      setMessage("Error! Unable to add new Admin, try again")
       setType("error")
     }
     setLoading(false);

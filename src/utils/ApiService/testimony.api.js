@@ -18,3 +18,47 @@ export const getTestimony = async (id) => {
         return err;
     })
 }
+
+export const addTestimony = async (staffInfo) => {
+    return await axios
+      .post(`${baseUrl}/photos`, {
+        //   fullName: staffInfo.fullName,
+        //   email: staffInfo.email,
+        //   role: staffInfo.role,
+        //   gender: staffInfo.gender,
+        //   staffLocation: staffInfo.staffLocation,
+        //   aipmService: staffInfo.aipmService,
+        userId: "1",
+        id: "2",
+        title: "user added",
+        body: "body part",
+      })
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  };
+  
+  export const updatTestimony = async (staffInfo) => {
+    return await axios
+      .put(`${baseUrl}/photos/${staffInfo.id}`, {
+        //   fullName: staffInfo.fullName,
+        //   email: staffInfo.email,
+        //   role: staffInfo.role,
+        //   gender: staffInfo.gender,
+        //   staffLocation: staffInfo.staffLocation,
+        //   aipmService: staffInfo.aipmService,
+        userId: "1",
+        id: staffInfo.id,
+        title: "user added",
+        body: "body part",
+      })
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  }

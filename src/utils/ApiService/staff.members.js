@@ -61,7 +61,6 @@ export const updatStaffMember = async (staffInfo) => {
       body: "body part",
     })
     .then((res) => {
-      console.log("update response is  ", res)
       return res;
     })
     .catch((err) => {

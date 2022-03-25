@@ -58,3 +58,17 @@ export const getAdminListAction = (data) => {
         payload: data
     }
 }
+
+export const getUniversityStudentsMovementsAction = (data) => {
+    return {
+        type: "GET_UNIVERSITY_STUDENTS_MOVEMENTS",
+        payload: data
+    }
+}
+
+export const getUniversityStudentsMovementAction = (data) => {
+    return {
+        type: "GET_UNIVERSITY_STUDENTS_MOVEMENT",
+        payload: data
+    }
+}

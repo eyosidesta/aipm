@@ -17,3 +17,39 @@ export const getNew = async (id) => {
         return err;
     })
 }
+
+export const addNews = async (newsInfo) => {
+    return await axios
+      .post(`${baseUrl}/photos`, {
+        //   title: newsInfo.title,
+        //   detail: newsInfo.detail,
+        userId: "1",
+        id: "2",
+        title: "user added",
+        body: "body part",
+      })
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  };
+
+  export const updatNews = async (newsInfo) => {
+    return await axios
+      .put(`${baseUrl}/photos/${newsInfo.id}`, {
+        //   title: newsInfo.title,
+        //   detail: newsInfo.detail,
+        userId: "1",
+        id: newsInfo.id,
+        title: "user added",
+        body: "body part",
+      })
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  }

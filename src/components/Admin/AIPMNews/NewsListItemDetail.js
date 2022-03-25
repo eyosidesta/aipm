@@ -43,11 +43,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const StaffListItemDetail = ({ data, setEditMode }) => {
+const NewsListItemDetail = ({ data, setEditMode }) => {
   const classes = useStyles();
 
   const theme = useTheme();
   const greaterThanExtremeSmall = useMediaQuery(theme.breakpoints.up("sm"));
+  
   const handleEditClick = () => {
     setEditMode(false);
   };
@@ -62,27 +63,6 @@ const StaffListItemDetail = ({ data, setEditMode }) => {
           <Icon>edit</Icon>
         </Grid>
       </Grid>
-      <Grid container spacing={3}>
-        <Grid item>
-          <Typography variant="h6">{data.fullName}</Typography>
-        </Grid>
-        <Grid item>
-          {greaterThanExtremeSmall && <Typography variant="h6"> | </Typography>}
-        </Grid>
-        <Grid item>
-          <Typography variant="h6">{data.aipmService}</Typography>
-        </Grid>
-        <Grid item>
-          {greaterThanExtremeSmall && <Typography variant="h6"> | </Typography>}
-        </Grid>
-        <Grid item>
-          <Typography variant="h6">
-            {data.staffLocation == "Ethiopia"
-              ? "Ethiopian AIPM Staff Member"
-              : "USA AIPM Staff Member"}
-          </Typography>
-        </Grid>
-      </Grid>
       <Grid container className={classes.detailGridContainer}>
         <Grid item>
           <img src={data.imageUrl} className={classes.image} />
@@ -95,26 +75,16 @@ const StaffListItemDetail = ({ data, setEditMode }) => {
         >
           <Grid container direction="column">
             <Grid item style={{ marginBottom: "1%" }}>
-              <Typography variant="h6">Who is {data.fullName}</Typography>
+              <Typography variant="h6">{data.title}</Typography>
             </Grid>
             <Grid item>
-              <Typography varaint="body2">{data.whoIsHe}</Typography>
+              <Typography varaint="body2">{data.detail}</Typography>
             </Grid>
           </Grid>
         </Grid>
       </Grid>
-      <div className={classes.responsibility}>
-        <Typography variant="h6">AIPM Responsibility</Typography>
-        <Typography variant="body2">{data.responsibility}</Typography>
-      </div>
-      <div className={classes.passionContainer}>
-        <Typography variant="h6">
-          {data.gender == "Male" ? "His" : "Her"} Passion
-        </Typography>
-        <Typography variant="body2">{data.passion}</Typography>
-      </div>
     </div>
   );
 };
 
-export default StaffListItemDetail;
+export default NewsListItemDetail;

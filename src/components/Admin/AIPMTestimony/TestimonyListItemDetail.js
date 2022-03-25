@@ -35,15 +35,12 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 5,
     marginTop: "20%",
   },
-  responsibility: {
+  descriptionTwo: {
     marginTop: 10,
-  },
-  passionContainer: {
-    marginTop: 8,
   },
 }));
 
-const StaffListItemDetail = ({ data, setEditMode }) => {
+const TestimonyListItemDetail = ({ data, setEditMode }) => {
   const classes = useStyles();
 
   const theme = useTheme();
@@ -70,16 +67,14 @@ const StaffListItemDetail = ({ data, setEditMode }) => {
           {greaterThanExtremeSmall && <Typography variant="h6"> | </Typography>}
         </Grid>
         <Grid item>
-          <Typography variant="h6">{data.aipmService}</Typography>
+          <Typography variant="h6">{data.specialThing}</Typography>
         </Grid>
         <Grid item>
           {greaterThanExtremeSmall && <Typography variant="h6"> | </Typography>}
         </Grid>
         <Grid item>
           <Typography variant="h6">
-            {data.staffLocation == "Ethiopia"
-              ? "Ethiopian AIPM Staff Member"
-              : "USA AIPM Staff Member"}
+            {data.servicePlace}
           </Typography>
         </Grid>
       </Grid>
@@ -94,27 +89,17 @@ const StaffListItemDetail = ({ data, setEditMode }) => {
           style={{ marginLeft: greaterThanExtremeSmall && "3%" }}
         >
           <Grid container direction="column">
-            <Grid item style={{ marginBottom: "1%" }}>
-              <Typography variant="h6">Who is {data.fullName}</Typography>
-            </Grid>
             <Grid item>
-              <Typography varaint="body2">{data.whoIsHe}</Typography>
+              <Typography varaint="body2">{data.descriptionOne}</Typography>
             </Grid>
           </Grid>
         </Grid>
       </Grid>
-      <div className={classes.responsibility}>
-        <Typography variant="h6">AIPM Responsibility</Typography>
-        <Typography variant="body2">{data.responsibility}</Typography>
-      </div>
-      <div className={classes.passionContainer}>
-        <Typography variant="h6">
-          {data.gender == "Male" ? "His" : "Her"} Passion
-        </Typography>
-        <Typography variant="body2">{data.passion}</Typography>
+      <div className={classes.descriptionTwo}>
+        <Typography variant="body2">{data.descriptionTwo}</Typography>
       </div>
     </div>
   );
 };
 
-export default StaffListItemDetail;
+export default TestimonyListItemDetail;

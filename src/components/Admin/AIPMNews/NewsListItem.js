@@ -1,13 +1,8 @@
 import React, { useState } from "react";
-import {
-  makeStyles,
-} from "@material-ui/core";
-import {
-  WHITE_COLOR,
-  DEEP_BLUE_COLOR,
-} from "../../../utils/constants/colors";
-import StaffListItemDetail from "./StaffListItemDetail";
-import StaffForm from "./StaffForm";
+import { makeStyles } from "@material-ui/core";
+import { WHITE_COLOR, DEEP_BLUE_COLOR } from "../../../utils/constants/colors";
+import NewsListItemDetail from "./NewsListItemDetail";
+import NewsForm from "./NewsForm";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,23 +13,21 @@ const useStyles = makeStyles((theme) => ({
     color: DEEP_BLUE_COLOR,
     marginBottom: 10,
   },
-
 }));
 
-const StaffListItem = ({ data }) => {
+const NewsListItem = ({ data }) => {
   const classes = useStyles();
   const [editMode, setEditMode] = useState(true);
 
   return (
     <div className={classes.root}>
       {editMode ? (
-          <StaffListItemDetail data={data}
-          setEditMode={setEditMode} />
+        <NewsListItemDetail data={data} setEditMode={setEditMode} />
       ) : (
-        <StaffForm data={data} setEditMode={setEditMode}/>
+        <NewsForm data={data} setEditMode={setEditMode} />
       )}
     </div>
   );
 };
 
-export default StaffListItem;
+export default NewsListItem;

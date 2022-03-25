@@ -6,8 +6,8 @@ import {
   WHITE_COLOR,
   DEEP_BLUE_COLOR,
 } from "../../../utils/constants/colors";
-import StaffListItemDetail from "./StaffListItemDetail";
-import StaffForm from "./StaffForm";
+import TestimonyForm from "./TestimonyForm";
+import TestimonyListItemDetail from "./TestimonyListItemDetail";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,20 +21,20 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const StaffListItem = ({ data }) => {
+const TestimonyListItem = ({ data }) => {
   const classes = useStyles();
   const [editMode, setEditMode] = useState(true);
 
   return (
     <div className={classes.root}>
       {editMode ? (
-          <StaffListItemDetail data={data}
+          <TestimonyListItemDetail data={data}
           setEditMode={setEditMode} />
       ) : (
-        <StaffForm data={data} setEditMode={setEditMode}/>
+        <TestimonyForm data={data} setEditMode={setEditMode}/>
       )}
     </div>
   );
 };
 
-export default StaffListItem;
+export default TestimonyListItem;
