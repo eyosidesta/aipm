@@ -16,10 +16,9 @@ import {
   WHITE_COLOR,
   BACKGROUND_COLOR,
 } from "../../../utils/constants/colors";
-import {
-  addNews,
-  updatNews,
-} from "../../../utils/ApiService/news.api";
+import { addNews, updatNews } from "../../../utils/ApiService/news.api";
+import { Formik } from "formik";
+import FormError from "../Shared/FormError";
 import SnackBar from "../../Shared/SnackBar";
 
 const useStyles = makeStyles((theme) => ({
@@ -80,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
   },
   ClearIcon: {
     marginRight: "5%",
-    cursor: "pointer"
+    cursor: "pointer",
   },
 }));
 
@@ -90,52 +89,26 @@ const NewsForm = ({ data, setEditMode }) => {
   const [type, setType] = useState("success");
   const [message, setMessage] = useState("News Added Successfully!");
   const [loading, setLoading] = useState(false);
-  const [newsInfo, setNewsInfo] = useState(
-    data
-      ? {
-          id: data.id,
-          title: data.title,
-          detail: data.detail,
-        }
-      : {
-          title: "",
-          detail: "",
-        }
-  );
 
   const theme = useTheme();
   const greaterThanExtremeSmall = useMediaQuery(theme.breakpoints.up("sm"));
 
-  const handleTitleChange = (event) => {
-    let updateTitle = { title: event.target.value };
-    setNewsInfo((newsInfo) => ({
-      ...newsInfo,
-      ...updateTitle,
-    }));
-  };
-  const handleDetailChange = (event) => {
-    let updateDetail = { detail: event.target.value };
-    setNewsInfo((newsInfo) => ({
-      ...newsInfo,
-      ...updateDetail,
-    }));
-  };
-
-  const handleSubmitClick = async () => {
+  const handleSubmitClick = async (values) => {
+    console.log("enashinina", values.title, "wow", values.detail);
     setLoading(true);
     if (!data) {
-      const res = await addNews(newsInfo);
+      const res = await addNews(values);
       if (!(res.statusText == "")) {
         setMessage("Error! Unable to update news, try gain");
         setType("error");
       }
     } else {
-      const res = await updatNews(newsInfo);
+      const res = await updatNews(values);
       if (!(res.statusText == "")) {
         setMessage("Error! Unable to update news, try again");
         setType("error");
       } else {
-        setMessage("News Updated Successfully!")
+        setMessage("News Updated Successfully!");
       }
     }
     setLoading(false);
@@ -146,11 +119,13 @@ const NewsForm = ({ data, setEditMode }) => {
     }, 3000);
   };
 
-  const handleCancelClick = () => {
-    setNewsInfo(() => ({
-      title: "",
-      detail: "",
-    }));
+  const handleCancelClick = (values) => {
+    values.title = "";
+    values.detail = "";
+    // setNewsInfo(() => ({
+    //   title: "",
+    //   detail: "",
+    // }));
   };
 
   const handleClearIconClick = () => {
@@ -159,98 +134,138 @@ const NewsForm = ({ data, setEditMode }) => {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={3} className={classes.gridContainer}>
-        <Grid item xs={12} sm={3}>
-          <input
-            className={classes.imageInput}
-            accept="image/*"
-            type="file"
-            id="contained-button-file"
-            multiple
-          />
-          <label htmlFor="contained-button-file">
-            <Button
-              variant="contained"
-              className={classes.imageUploadButton}
-              style={{ marginTop: greaterThanExtremeSmall && 50 }}
-              component="span"
-            >
-              Upload
-            </Button>
-          </label>
-        </Grid>
-        <Grid item xs={12} sm>
-          <Grid container direction="column">
-            <Grid item>
-              <form noValidate autoComplete="off">
-                <Typography variant="h6">Title</Typography>
-                {false ? (
-                  <TextField
-                    id="standard-basic"
-                    value={newsInfo.title}
-                    style={{ minWidth: greaterThanExtremeSmall ? 300 : 200 }}
-                  />
-                ) : (
-                  <TextField
-                    id="standard-basic"
-                    error
-                    helperText="title is required"
-                    value={newsInfo.title}
-                    onChange={handleTitleChange}
-                    style={{ minWidth: greaterThanExtremeSmall ? 300 : 200 }}
-                  />
-                )}
-                <Typography variant="h6">Description</Typography>
-                <TextField
-                  id="outlined-multiline-static"
-                  placeholder="add news description here"
-                  value={newsInfo.detail}
-                  onChange={handleDetailChange}
-                  multiline
-                  rows={4}
-                  className={classes.multilineTextField}
-                  style={{ minWidth: greaterThanExtremeSmall ? 300 : 200 }}
-                />
-                <div className={classes.buttonContainer}>
-                  <Button
-                    variant="contained"
-                    disabled={loading}
-                    className={classes.cancelButton}
-                    onClick={handleCancelClick}
-                  >
-                    cancel
-                  </Button>
-                  <span className={classes.submitButtonWrapper}>
-                    <Button
-                      variant="contained"
-                      className={classes.submitButton}
-                      disabled={loading}
-                      onClick={handleSubmitClick}
-                    >
-                      Submit
-                    </Button>
-                  </span>
-                  {loading && (
-                    <CircularProgress
-                      size={24}
-                      className={classes.circularProgress}
-                    />
-                  )}
-                </div>
-              </form>
+      <Formik
+        initialValues={{
+          title: data ? data.title : "",
+          detail: data ? data.detail : "",
+        }}
+        validate={(values) => {
+          const errors = {};
+          if (!values.title) {
+            errors.title = "title is required";
+          }
+          if (!values.detail) {
+            errors.detail = "description is required";
+          } else if (
+            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.detail)
+          ) {
+            errors.detail = "Invalid email address";
+          }
+          return errors;
+        }}
+        onSubmit={(values, { setSubmitting }) => {
+          handleSubmitClick(values);
+          // setTimeout(() => {
+          //   alert(JSON.stringify(values, null, 2));
+          //   setSubmitting(false);
+          // }, 4000);
+        }}
+      >
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleSubmit,
+          handleReset,
+        }) => (
+          <Grid container spacing={3} className={classes.gridContainer}>
+            <Grid item xs={12} sm={3}>
+              <input
+                className={classes.imageInput}
+                accept="image/*"
+                type="file"
+                id="contained-button-file"
+                multiple
+              />
+              <label htmlFor="contained-button-file">
+                <Button
+                  variant="contained"
+                  className={classes.imageUploadButton}
+                  style={{ marginTop: greaterThanExtremeSmall && 50 }}
+                  component="span"
+                >
+                  Upload
+                </Button>
+              </label>
             </Grid>
-          </Grid>
-        </Grid>
-        {data && (
-          <Grid
-            item
-            className={classes.ClearIcon}
-            onClick={handleClearIconClick}
-          >
-            <Icon>clear</Icon>
+            <Grid item xs={12} sm>
+              <Grid container direction="column">
+                <Grid item>
+                  <form noValidate autoComplete="off">
+                    <Typography variant="h6">Title</Typography>
+                    <TextField
+                      name="title"
+                      id="standard-basic"
+                      value={values.title}
+                      onChange={handleChange}
+                      style={{ minWidth: greaterThanExtremeSmall ? 300 : 200 }}
+                    />
+                    <FormError
+                      errorMessage={
+                        errors.title && touched.title && errors.title
+                      }
+                    />
+                    <Typography variant="h6">Description</Typography>
+                    <TextField
+                      name="detail"
+                      id="outlined-multiline-static"
+                      placeholder="add news description here"
+                      value={values.detail}
+                      onChange={handleChange}
+                      multiline
+                      rows={4}
+                      className={classes.multilineTextField}
+                      style={{ minWidth: greaterThanExtremeSmall ? 300 : 200 }}
+                    />
+                    <FormError
+                      errorMessage={
+                        errors.detail && touched.detail && errors.detail
+                      }
+                    />
+                    <div className={classes.buttonContainer}>
+                      <Button
+                        variant="contained"
+                        disabled={loading}
+                        className={classes.cancelButton}
+                        onClick={handleReset}
+                        //  handleCancelClick(values)}
+                      >
+                        cancel
+                      </Button>
+                      <span className={classes.submitButtonWrapper}>
+                        <Button
+                          variant="contained"
+                          className={classes.submitButton}
+                          disabled={loading}
+                          onClick={handleSubmit}
+                        >
+                          Submit
+                        </Button>
+                      </span>
+                      {loading && (
+                        <CircularProgress
+                          size={24}
+                          className={classes.circularProgress}
+                        />
+                      )}
+                    </div>
+                  </form>
+                </Grid>
+              </Grid>
+            </Grid>
+            {data && (
+              <Grid
+                item
+                className={classes.ClearIcon}
+                onClick={handleClearIconClick}
+              >
+                <Icon>clear</Icon>
+              </Grid>
+            )}
           </Grid>
         )}
-      </Grid>
+      </Formik>
       <SnackBar openSnackbar={openSnackbar} message={message} type={type} />
     </div>
   );
