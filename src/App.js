@@ -5,7 +5,7 @@ import { BACKGROUND_COLOR } from "./utils/constants/colors";
 import AppAdmin from "./pages/Admin/AppAdmin";
 import AppUsers from "./pages/Users/AppUsers";
 function App() {
-  const [page, setPage] = useState(false);
+  const [page, setPage] = useState(true);
   return (
     <Router>
       <div

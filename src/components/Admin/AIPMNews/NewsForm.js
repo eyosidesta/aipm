@@ -18,6 +18,7 @@ import {
 } from "../../../utils/constants/colors";
 import { addNews, updatNews } from "../../../utils/ApiService/news.api";
 import { Formik } from "formik";
+import DeleteIcon from "@material-ui/icons/Delete";
 import FormError from "../Shared/FormError";
 import SnackBar from "../../Shared/SnackBar";
 
@@ -81,6 +82,14 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "5%",
     cursor: "pointer",
   },
+  newsImage: {
+    marginTop: 10,
+    width: 100,
+    height: 100,
+  },
+  imageRemove: {
+    cursor: "pointer"
+  }
 }));
 
 const NewsForm = ({ data, setEditMode }) => {
@@ -89,9 +98,18 @@ const NewsForm = ({ data, setEditMode }) => {
   const [type, setType] = useState("success");
   const [message, setMessage] = useState("News Added Successfully!");
   const [loading, setLoading] = useState(false);
+  const [newsImage, setNewsImage] = useState(data ? data.newsImage : "");
 
   const theme = useTheme();
   const greaterThanExtremeSmall = useMediaQuery(theme.breakpoints.up("sm"));
+
+  const handleImageChange = (event) => {
+    setNewsImage(URL.createObjectURL(event.target.files[0]));
+  };
+
+  const handleRemoveImage = () => {
+    setNewsImage("");
+  }
 
   const handleSubmitClick = async (values) => {
     console.log("enashinina", values.title, "wow", values.detail);
@@ -119,15 +137,6 @@ const NewsForm = ({ data, setEditMode }) => {
     }, 3000);
   };
 
-  const handleCancelClick = (values) => {
-    values.title = "";
-    values.detail = "";
-    // setNewsInfo(() => ({
-    //   title: "",
-    //   detail: "",
-    // }));
-  };
-
   const handleClearIconClick = () => {
     setEditMode(true);
   };
@@ -136,13 +145,16 @@ const NewsForm = ({ data, setEditMode }) => {
     <div className={classes.root}>
       <Formik
         initialValues={{
-          title: data ? data.title : "",
-          detail: data ? data.detail : "",
+          title:  "",
+          detail:  "",
         }}
         validate={(values) => {
           const errors = {};
           if (!values.title) {
             errors.title = "title is required";
+          }
+          if (!newsImage) {
+            errors.newsImage = "image is required";
           }
           if (!values.detail) {
             errors.detail = "description is required";
@@ -151,6 +163,7 @@ const NewsForm = ({ data, setEditMode }) => {
           ) {
             errors.detail = "Invalid email address";
           }
+
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
@@ -172,10 +185,12 @@ const NewsForm = ({ data, setEditMode }) => {
           <Grid container spacing={3} className={classes.gridContainer}>
             <Grid item xs={12} sm={3}>
               <input
+                // name="newsImage"
                 className={classes.imageInput}
                 accept="image/*"
                 type="file"
                 id="contained-button-file"
+                onChange={handleImageChange}
                 multiple
               />
               <label htmlFor="contained-button-file">
@@ -188,6 +203,14 @@ const NewsForm = ({ data, setEditMode }) => {
                   Upload
                 </Button>
               </label>
+              <br />
+              { data && (
+                <>
+                  <img src={newsImage} className={classes.newsImage} />
+                  <DeleteIcon className={classes.imageRemove} onClick={handleRemoveImage} />
+                </>
+              )}
+              <FormError errorMessage={errors.newsImage} />
             </Grid>
             <Grid item xs={12} sm>
               <Grid container direction="column">
