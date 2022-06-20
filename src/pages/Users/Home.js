@@ -71,23 +71,41 @@ function Home() {
   const classes = useStyles();
   const items = [
     {
-      title: "wining souls for chirst",
-      detail: `He who wins souls is wise. Remember God draws the hearts of
-      men and it’s our job to point people back to Him. Soul
-      winning is a process and takes time. Sometimes, our most
-      effective witnessing tool is our lifestyle. According to
-      Proverbs 11:30, our life is a message of hope and light that
-      both reflects and is a representation of Christ.`,
+      title: "How AIPM Stablished",
+      detail: `This is about an incredible movement called Ambaricho 
+      International Prayer and Mission Movement (AIPM)
+      The movement was started on 3,028 meters (9,932 feet) Mountain 
+      called Ambaricho. This mountain is located 350 KM (220 miles) 
+      to the south from the capital, Addis Ababa. 
+      Ambaricho was the seat of a witchdoctor family called Abba Sarecho. 
+      Abba Sarecho’s family was worshipped for more than 500 years, where 
+      tens of thousands of people were gathering each year to worship the 
+      consecutive Abba-Sarechos. Missionaries arrived to the southern part of 
+      Ethiopia in late 1920s and afterwards from the USA, Canada, Australia, 
+      England and New Zealand. Their faithful endeavor brought about the 
+      conversion of natives who were very bold to share their faith in Christ. 
+      Their day and night prayer fueled the spread of the Gospel, which 
+      transformed the lives of people. To that effect currently over 
+      95% of the Kambatta tribe are evangelical Christians. The last Abba Sarecho, 
+      who is still alive, became a follower of Jesus Christ, and the very place where 
+      he was worshipped also became the place of this prayer movement and missionary sending center. `,
       imageUrl: `${homeImageOne}`,
     },
     {
-      title: "wining souls for chirst",
-      detail: `He who wins souls is wise. Remember God draws the hearts of
-      men and it’s our job to point people back to Him. Soul
-      winning is a process and takes time. Sometimes, our most
-      effective witnessing tool is our lifestyle. According to
-      Proverbs 11:30, our life is a message of hope and light that
-      both reflects and is a representation of Christ.`,
+      title: "The Founder of AIPM and it's history behind",
+      detail: `God used Dr. Desta Langena Letta, as the founder and Director of AIPM. 
+      He received his degree in Physics from Addis Ababa University and did his MA in 
+      missions in Singapore. He received his Doctoral degree in missiology at Western 
+      Seminary in Portland Oregon, USA. He directed the Ethiopian Kale Heywet missionary 
+      training school for 6 years before his study at Western. All these experiences equipped 
+      him to be a catalyst for the commencement and growth of this movement (AIPM). Every 
+      January 19th an average of 150,000 Christians are gathering on the top of Mount Ambaricho 
+      to pray and fast for World Evangelism. has sent over 300 missionaries and is praying to 
+      send more than 1,000 missionaries to the unreached people groups of Ethiopia. Planning 
+      is underway to start sending missionary families soon outside Ethiopia, as the Lord provides support. 
+      The Governor of the Durame district dedicated Ambaricho to God as a place of prayer and 
+      to build prayer houses on the very top of the mountain.
+      `,
       imageUrl: `${homeImageTwo}`,
     },
   ];
@@ -98,7 +116,7 @@ function Home() {
     backgroundImage: backgroundImage,
     title: "AIPM",
     detail: {
-      description: "Ambaricho International And Prayer Movement",
+      description: "Ambaricho International Prayer And Mission Movement",
       titleFont: "h3",
       descriptionFont: "h6",
     },
