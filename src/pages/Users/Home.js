@@ -64,7 +64,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 30,
     width: "94%",
     paddingLeft: "3%",
-    paddingLeft: "3%",
   },
 }));
 function Home() {
