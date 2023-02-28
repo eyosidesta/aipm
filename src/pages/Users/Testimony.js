@@ -165,6 +165,7 @@ const Testimony = () => {
   };
 
   const [isLoading, setIsLoading] = useState(false);
+  // const [data, setData] = useState(items ? items.slice(0, 3) : []);
   const [data, setData] = useState(items ? items.slice(0, 3) : []);
   const dispatch = useDispatch();
   const testimoniesState = useSelector((state) => state.testimonies);
@@ -173,10 +174,12 @@ const Testimony = () => {
     fetchTestimonies();
   }, []);
   const fetchTestimonies = async () => {
-    setIsLoading(true);
-    const res = await getTestimonies();
-    setIsLoading(false);
-    dispatch(getTestimoniesAction(res.data));
+    // setIsLoading(true);
+    // const res = await getTestimonies();
+    // setData(res.data.data)
+    // setIsLoading(false);
+    // dispatch(getTestimoniesAction(res.data.data));
+    // dispatch(getTestimoniesAction(res.data));
     // setData(items.slice(0, 3));
   };
 
@@ -237,7 +240,7 @@ const Testimony = () => {
             </div>
           ) : (
             <div>
-              <CardContainer testimonies={items} toggleModal={toggleModal} />
+              <CardContainer testimonies={data} toggleModal={toggleModal} />
             </div>
           )}
         </div>

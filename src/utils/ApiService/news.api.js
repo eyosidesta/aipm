@@ -3,7 +3,7 @@ import { baseUrl } from "../constants/baseURL";
 axios.defaults.baseURL = process.env.AIPM_API_SERVICE;
 
 export const getNews = async () => {
-    return await axios.get(`${baseUrl}/photos`).then(res => {
+    return await axios.get(`${baseUrl}/news`).then(res => {
         return res;
     }).catch(err => {
         return err
@@ -11,7 +11,7 @@ export const getNews = async () => {
 }
 
 export const getNew = async (id) => {
-    return await axios.get(`${baseUrl}/photos/${id}`).then(res => {
+    return await axios.get(`${baseUrl}/news/${id}`).then(res => {
         return res;
     }).catch(err => {
         return err;
@@ -20,7 +20,7 @@ export const getNew = async (id) => {
 
 export const addNews = async (newsInfo) => {
     return await axios
-      .post(`${baseUrl}/photos`, {
+      .post(`${baseUrl}/news`, {
         //   title: newsInfo.title,
         //   detail: newsInfo.detail,
         userId: "1",
@@ -38,7 +38,7 @@ export const addNews = async (newsInfo) => {
 
   export const updatNews = async (newsInfo) => {
     return await axios
-      .put(`${baseUrl}/photos/${newsInfo.id}`, {
+      .put(`${baseUrl}/news/${newsInfo.id}`, {
         //   title: newsInfo.title,
         //   detail: newsInfo.detail,
         userId: "1",

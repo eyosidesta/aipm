@@ -514,7 +514,6 @@ const StaffAndBoardMembers = () => {
 
   const toggleMemberClick = (id) => {
         navigate(`/staff-board-member/${id}`, {replace: true}, [navigate]);
-        console.log("tooggle clickedds", id)
   }
   const fetchStaffMembers = async () => {
     setIsLoading(true);

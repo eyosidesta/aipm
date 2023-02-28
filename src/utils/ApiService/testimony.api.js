@@ -4,7 +4,7 @@ import { baseUrl } from "../constants/baseURL";
 axios.defaults.baseURL = process.env.AIPM_API_SERVICE;
 
 export const getTestimonies = async () => {
-    return await axios.get(`${baseUrl}/photos`).then(res => {
+    return await axios.get(`${baseUrl}/testimonies`).then(res => {
         return res;
     }).catch(err => {
         return err;
@@ -12,7 +12,7 @@ export const getTestimonies = async () => {
 }
 
 export const getTestimony = async (id) => {
-    return await axios.get(`${baseUrl}/photos/${id}`).then(res => {
+    return await axios.get(`${baseUrl}/testimonies/${id}`).then(res => {
         return res
     }).catch(err => {
         return err;
@@ -21,7 +21,7 @@ export const getTestimony = async (id) => {
 
 export const addTestimony = async (staffInfo) => {
     return await axios
-      .post(`${baseUrl}/photos`, {
+      .post(`${baseUrl}/testimonies`, {
         //   fullName: staffInfo.fullName,
         //   email: staffInfo.email,
         //   role: staffInfo.role,
@@ -43,7 +43,7 @@ export const addTestimony = async (staffInfo) => {
   
   export const updatTestimony = async (staffInfo) => {
     return await axios
-      .put(`${baseUrl}/photos/${staffInfo.id}`, {
+      .put(`${baseUrl}/testimonies/${staffInfo.id}`, {
         //   fullName: staffInfo.fullName,
         //   email: staffInfo.email,
         //   role: staffInfo.role,

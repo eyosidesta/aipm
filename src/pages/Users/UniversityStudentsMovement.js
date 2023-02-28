@@ -132,9 +132,9 @@ const UniversityStudentsMovement = () => {
       : parseInt(items.length / 3);
 
   const fetchUniversityStudentsMovement = async () => {
-    setIsLoading(true);
-    const res = await getUniversityStudentsMovements();
-    setIsLoading(false);
+    // setIsLoading(true);
+    // const res = await getUniversityStudentsMovements();
+    // setIsLoading(false);
   };
 
   useEffect(() => {

@@ -112,7 +112,6 @@ const NewsForm = ({ data, setEditMode }) => {
   }
 
   const handleSubmitClick = async (values) => {
-    console.log("enashinina", values.title, "wow", values.detail);
     setLoading(true);
     if (!data) {
       const res = await addNews(values);
@@ -158,11 +157,12 @@ const NewsForm = ({ data, setEditMode }) => {
           }
           if (!values.detail) {
             errors.detail = "description is required";
-          } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.detail)
-          ) {
-            errors.detail = "Invalid email address";
-          }
+          } 
+          // else if (
+          //   !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.detail)
+          // ) {
+          //   errors.detail = "Invalid email address";
+          // }
 
           return errors;
         }}

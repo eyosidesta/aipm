@@ -8,31 +8,41 @@ const SideNav = () => {
           id: 1,
           title: "Dashboard",
           url: "/",
-          onClick: () => console.log("wow kasu onclick ", 1),
+          onClick: () => {
+            // console.log("dashboard ", 1),
+          }
         },
         {
           id: 2,
           title: "Add Admin",
           url: "/add-admin",
-          onClick: () => console.log("wow kasu onclick ", 2),
+          onClick: () => {
+            // console.log("admin ", 2),
+          }
         },
         {
           id: 3,
           title: "Testimony",
           url: "/testimony",
-          onClick: () => console.log("wow kasu onclick ", 3),
+          onClick: () => {
+            // console.log("testimony ", 3),
+          }
         },
         {
           id: 4,
           title: "News",
           url: "/news",
-          onClick: () => console.log("wow kasu onclick ", 4),
+          onClick: () => {
+            // console.log("news ", 4),
+          },
         },
         {
           id: 5,
           title: "University Students",
           url: "/university-students",
-          onClick: () => console.log("wow kasu onclick ", 5),
+          onClick: () => {
+            // console.log("university students ", 5)
+          },
         },
         // {
         //   id: 6,
@@ -62,7 +72,9 @@ const SideNav = () => {
           id: 10,
           title: "My Profile",
           url: "/my-profile",
-          onClick: () => console.log("wow kasu onclick ", 10),
+          onClick: () => {
+            // console.log("my-profile ", 10),
+          }
         },
       ];
     return (
